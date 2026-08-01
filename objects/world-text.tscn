@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dn540qhfhtmdr"]
+
+[ext_resource type="Script" uid="uid://dlm0d0e2td8vm" path="res://sprite3d.gd" id="1_vxmwk"]
+[ext_resource type="FontFile" uid="uid://ug81fgiunlmr" path="res://fonts/EVA-MATISSE_CLASSIC.TTF" id="2_201ff"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fvag4"]
+viewport_path = NodePath("texts/Text1/Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kva58"]
+font = ExtResource("2_201ff")
+font_color = Color(0.21568628, 0.6627451, 0.3529412, 1)
+
+[node name="Text1" type="Node3D" unique_id=530388153]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=271163016]
+transform = Transform3D(0.99999994, -7.1054274e-15, 0, 0, 0.99999994, -6.1062266e-16, 0, -6.5225603e-16, 1, 0, 0, 0)
+texture = SubResource("ViewportTexture_fvag4")
+script = ExtResource("1_vxmwk")
+girl_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=739466579]
+transparent_bg = true
+size = Vector2i(442, 18)
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport" unique_id=581805365]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_right = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "They said I'd die without the suit."
+label_settings = SubResource("LabelSettings_kva58")
+horizontal_alignment = 1

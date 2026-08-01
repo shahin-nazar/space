@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bwa3iuc78tcsq"]
+
+[ext_resource type="Texture2D" uid="uid://bhj738rls7ws6" path="res://textures/chip/Chip004_1K-JPG_Color.jpg" id="1_vn0tp"]
+[ext_resource type="Texture2D" uid="uid://cs08tlfbouyx5" path="res://textures/chip/Chip006_1K-JPG_Metalness.jpg" id="2_l0jfi"]
+[ext_resource type="Texture2D" uid="uid://oaxrqwfoi3fb" path="res://textures/clays/Ground050_1K-JPG_NormalDX.jpg" id="3_ma6vk"]
+[ext_resource type="Texture2D" uid="uid://lewn6y1gh54y" path="res://textures/chip/Chip006_1K-JPG_Roughness.jpg" id="4_bewse"]
+
+[resource]
+cull_mode = 2
+albedo_color = Color(0.8289133, 0.35691988, 0.2953501, 1)
+albedo_texture = ExtResource("1_vn0tp")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_l0jfi")
+metallic_texture_channel = 1
+roughness_texture = ExtResource("4_bewse")
+emission_energy_multiplier = 12.58
+normal_enabled = true
+normal_texture = ExtResource("3_ma6vk")
+rim_enabled = true
+rim = 0.08
+rim_tint = 1.0
+uv1_scale = Vector3(0.02, 0.02, 0.02)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 29.421928
+uv1_world_triplanar = true
+uv2_triplanar = true
+uv2_world_triplanar = true
+texture_filter = 0

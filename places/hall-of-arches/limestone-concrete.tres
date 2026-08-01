@@ -1,0 +1,30 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://o8bal2xfcnh1"]
+
+[ext_resource type="Texture2D" uid="uid://cxgwxiq2rx2pn" path="res://textures/DIY-textures/plasterwall.png" id="1_4dl6q"]
+[ext_resource type="Texture2D" uid="uid://8n8dj2rx2oqu" path="res://textures/flesh/others_0001_ao_2k.jpg" id="1_5d1wp"]
+[ext_resource type="Texture2D" uid="uid://6851hwjg7fb5" path="res://textures/flesh/others_0001_roughness_2k.jpg" id="1_e811l"]
+[ext_resource type="Texture2D" uid="uid://cqpc4n1bcrix5" path="res://textures/flesh/others_0001_normal_directx_2k.png" id="3_4dl6q"]
+[ext_resource type="Texture2D" uid="uid://cxwi7b8aknqcy" path="res://textures/chip/Chip003_1K-JPG_Metalness.jpg" id="3_e811l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5d1wp"]
+
+[resource]
+albedo_texture = ExtResource("1_4dl6q")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("3_e811l")
+roughness_texture = ExtResource("3_e811l")
+emission_enabled = true
+emission_energy_multiplier = 3.89
+emission_texture = ExtResource("1_e811l")
+normal_enabled = true
+normal_texture = ExtResource("3_4dl6q")
+bent_normal_enabled = true
+bent_normal_texture = SubResource("NoiseTexture2D_5d1wp")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("1_5d1wp")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

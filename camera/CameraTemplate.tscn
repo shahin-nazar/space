@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dg4rir777unxx"]
+
+[ext_resource type="Script" uid="uid://dpjjqcedvpruq" path="res://camera/scripts/FixedCamera.gd" id="1_yqcrr"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="2_m7dyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dd4il"]
+size = Vector3(82, 125, 100)
+
+[node name="Room1" type="Camera3D" unique_id=1707332746]
+current = true
+fov = 46.0
+script = ExtResource("1_yqcrr")
+follow_x = false
+follow_y = false
+lock_rotation_y = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=305455709]
+top_level = true
+script = ExtResource("2_m7dyc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1380871372]
+shape = SubResource("BoxShape3D_dd4il")

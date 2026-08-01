@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dxgba7o13hl5l"]
+
+[ext_resource type="Texture2D" uid="uid://c1dy5p3ghagps" path="res://textures/GridTexturesPNG/Dark/texture_11.png" id="1_15sk1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1v5b"]
+albedo_texture = ExtResource("1_15sk1")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node" type="Node" unique_id=92744325]
+
+[node name="BigWall" type="CSGBox3D" parent="." unique_id=1138516247]
+transform = Transform3D(3.102, 0, 0, 0, 3.102, 0, 0, 0, 3.102, 38.775, 57.387, -96.162)
+use_collision = true
+size = Vector3(275, 287, 63)
+material = SubResource("StandardMaterial3D_p1v5b")
+
+[node name="BigHole" type="CSGCylinder3D" parent="BigWall" unique_id=966444499]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 31.665062, 36.30336, -8.660257)
+operation = 2
+radius = 86.674
+height = 96.332375
+cone = true
+
+[node name="BigHoleRim" type="CSGCylinder3D" parent="BigWall" unique_id=1015868150]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 31.665062, 36.30336, 22.685894)
+operation = 2
+radius = 95.531
+height = 18.166187
+cone = true
+
+[node name="BigWall2" type="CSGBox3D" parent="." unique_id=14872865]
+transform = Transform3D(3.102, 0, 0, 0, 3.102, 0, 0, 0, 3.102, 38.775, 57.387, 116.838)
+use_collision = true
+size = Vector3(275, 287, 63)
+material = SubResource("StandardMaterial3D_p1v5b")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="BigWall2" unique_id=1257372914]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, -121.21215, -129.27145, 9.993553)
+operation = 2
+radius = 6.274
+height = 80.661
+sides = 16
+
+[node name="HoleMadeForYou" type="CSGCombiner3D" parent="." unique_id=1692811701]
+transform = Transform3D(3.102, 0, 0, 0, 3.102, 0, 0, 0, 3.102, 137, 170, -859)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="HoleMadeForYou" unique_id=1981593510]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 1.8067234e-07, 139.59033)
+radius = 7.621
+height = 10.266602
+cone = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="HoleMadeForYou/CSGCylinder3D" unique_id=1472289553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4720001, -6.434311e-08)
+operation = 2
+radius = 6.914
+height = 13.748
+cone = true
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="HoleMadeForYou" unique_id=1567588799]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 150.349)
+radius = 36.152
+height = 19.851
+cone = true
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="HoleMadeForYou/CSGCylinder3D3" unique_id=14655266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3100128, -3.8310372e-07)
+operation = 2
+radius = 32.801
+height = 29.295
+cone = true
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="HoleMadeForYou" unique_id=1496578253]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 188.86102)
+radius = 36.151
+height = 60.243
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="HoleMadeForYou/CSGCylinder3D5" unique_id=170843714]
+operation = 2
+radius = 24.496
+height = 80.662
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="HoleMadeForYou" unique_id=140350659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 134.53618)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="HoleMadeForYou/CSGBox3D3" unique_id=1843746978]
+operation = 2
+size = Vector3(0.5, 0.5, 4.215)

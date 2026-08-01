@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://hwwy273ewf2l"]
+
+[ext_resource type="Script" uid="uid://dgsmi3bo12b7b" path="res://player/slowdown_player.gd" id="1_eenvf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wygdx"]
+size = Vector3(8, 8, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p1v5b"]
+size = Vector3(8, 8, 8)
+
+[node name="Slowdown" type="Area3D"]
+script = ExtResource("1_eenvf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 0)
+shape = SubResource("BoxShape3D_wygdx")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8090007, 0.021000028)
+transparency = 0.57
+mesh = SubResource("BoxMesh_p1v5b")
+
+[connection signal="body_entered" from="." to="." method="in_slow"]
+[connection signal="body_exited" from="." to="." method="exit_slow"]

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://df2i8vgj7iuye"]
+
+[ext_resource type="Shader" uid="uid://b0474s3q0fiow" path="res://shaders-general/animemetal.gdshader" id="1_otmx2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_blhe0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_otmx2")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/color_ramp = SubResource("NoiseTexture2D_blhe0")
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/specular_size = 210.50000995125
+shader_parameter/specular_threshold = 0.83200003952
+shader_parameter/specular_strength = 3.218000152855
+shader_parameter/noise_pow = 3.46
+shader_parameter/noise_scl = 1.825
+shader_parameter/rim_pow = 4.0
+shader_parameter/rim_str = 1.65

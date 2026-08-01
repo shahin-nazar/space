@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bm8bbj1ureys8"]
+
+[ext_resource type="Material" uid="uid://c3tib74tqp6t8" path="res://textures/Grid.tres" id="1_hpqg0"]
+[ext_resource type="PackedScene" uid="uid://dg4rir777unxx" path="res://camera/CameraTemplate.tscn" id="2_x0qpr"]
+[ext_resource type="Script" uid="uid://byjhyv1paflug" path="res://interactables/door/door.gd" id="6_1rjua"]
+[ext_resource type="Shader" uid="uid://kcu8qhrb6nh6" path="res://shaders-general/scatterglass.gdshader" id="7_l0lli"]
+[ext_resource type="Material" uid="uid://12kopgl8m8j5" path="res://interactables/door/doormaterial.tres" id="8_brmcc"]
+[ext_resource type="Material" uid="uid://cwvfnncph4flq" path="res://interactables/light-indicators/light_indicator.tres" id="9_6ew4x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn3wo"]
+size = Vector3(1, 4, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huyys"]
+render_priority = 0
+shader = ExtResource("7_l0lli")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_coat = 0.0
+shader_parameter/oilyness = 0.1
+shader_parameter/rim_amount = 0.2
+shader_parameter/rim_shape = 4.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.2
+shader_parameter/specular = 0.8
+shader_parameter/refraction_strength = 0.5
+shader_parameter/scatter_strength = 0.5
+shader_parameter/tile_size = Vector2(10, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sx8fv"]
+material = SubResource("ShaderMaterial_huyys")
+radius = 2.8
+height = 5.9
+radial_segments = 16
+rings = 16
+
+[node name="Node" type="Node" unique_id=1875252895]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2106624571]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1116493011]
+size = Vector3(50, 1, 50)
+material = ExtResource("1_hpqg0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1329939216]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -6.151867)
+size = Vector3(50, 1, 50)
+material = ExtResource("1_hpqg0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1567491459]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -25)
+size = Vector3(50, 1, 50)
+material = ExtResource("1_hpqg0")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1208491606]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 25, 0, 0)
+size = Vector3(50, 1, 50)
+material = ExtResource("1_hpqg0")
+
+[node name="Room1" parent="." unique_id=1707332746 instance=ExtResource("2_x0qpr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.071003, 13.912001, -1.9990001)
+set_offset = true
+offset = Vector3(-5, 2, 0)
+follow_x = true
+follow_y = true
+follow_z = false
+lock_rotation_y = false
+
+[node name="door" type="StaticBody3D" parent="." unique_id=897673785]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23, 2.3530002, -12)
+script = ExtResource("6_1rjua")
+
+[node name="Glass" type="CollisionShape3D" parent="door" unique_id=676945773]
+transform = Transform3D(0.503, 0, 0, 0, 0.503, 0, 0, 0, 0.503, 0, 0, 0)
+shape = SubResource("BoxShape3D_bn3wo")
+
+[node name="Glass" type="MeshInstance3D" parent="door/Glass" unique_id=235222006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.338768, 0, 0, -1.7277168)
+mesh = SubResource("SphereMesh_sx8fv")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="door" unique_id=1777826463]
+transform = Transform3D(0.503, 0, 0, 0, 0.503, 0, 0, 0, 0.503, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="door/CSGCombiner3D" unique_id=519149910]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 3.5
+height = 4.0
+sides = 16
+material = ExtResource("8_brmcc")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="door/CSGCombiner3D" unique_id=733193783]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+operation = 2
+radius = 2.8
+height = 5.0
+sides = 16
+material = ExtResource("8_brmcc")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="door" unique_id=1013813987]
+transform = Transform3D(-0.503, 0, -4.3973657e-08, 0, 0.503, 0, 4.3973657e-08, 0, -0.503, 1.7050004, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="door/CSGCombiner3D2" unique_id=681255913]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+height = 4.25
+material = ExtResource("8_brmcc")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="door/CSGCombiner3D2" unique_id=1352758729]
+transform = Transform3D(0.577, 0, 0, 0, -2.5221471e-08, -0.577, 0, 1.5630931, -6.832497e-08, 0.15705776, -0.4771372, 0)
+height = 3.25
+material = ExtResource("8_brmcc")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="door/CSGCombiner3D2" unique_id=1775875436]
+transform = Transform3D(0.49705595, 0, 0, 0, 0.49705595, 0, 0, 0, 0.49705595, 0, 0, 2.2723653)
+radial_segments = 6
+material = ExtResource("9_6ew4x")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="door/CSGCombiner3D2" unique_id=514006907]
+transform = Transform3D(0.30121592, 0, 0, 0, 0.30121592, 0, 0, 0, 0.30121592, 0.15705776, -0.4771372, 2.5188859)
+radial_segments = 6
+material = ExtResource("9_6ew4x")

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ngku3kfqenk7"]
+
+[ext_resource type="Script" uid="uid://cbpij6s36mhrl" path="res://enemies/EnemyHurtboxComponent.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://dimdgrf5yt4qy" path="res://enemies/statemachine/state_machine.gd" id="3_qi2p4"]
+[ext_resource type="Script" uid="uid://b15jn3a28qjcm" path="res://enemies/statemachine/WanderState.gd" id="4_iifgy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7k104"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4gyqm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4gyqm"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1957320533]
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=817665860 node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_7k104")
+health_component = NodePath("../Sprite3D/SubViewport/Health")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hurtbox" unique_id=1293865843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_7k104")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=127350075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=149087610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_4gyqm")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1375421079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_4gyqm")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1796790429]
+transparent_bg = true
+size = Vector2i(238, 14)
+
+[node name="Health" type="ProgressBar" parent="Sprite3D/SubViewport" unique_id=1929377132]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 30.0
+step = 1.0
+value = 30.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=1541097938 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_qi2p4")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" unique_id=362642011 node_paths=PackedStringArray("opponent")]
+script = ExtResource("4_iifgy")
+opponent = NodePath("../..")
+metadata/_custom_type_script = "uid://b15jn3a28qjcm"

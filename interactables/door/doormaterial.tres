@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://12kopgl8m8j5"]
+
+[ext_resource type="Texture2D" uid="uid://cs08tlfbouyx5" path="res://textures/chip/Chip006_1K-JPG_Metalness.jpg" id="2_q3m56"]
+[ext_resource type="Texture2D" uid="uid://wmha8ab26k01" path="res://textures/chip/Chip003_1K-JPG_NormalGL.jpg" id="3_fwlly"]
+[ext_resource type="Texture2D" uid="uid://lewn6y1gh54y" path="res://textures/chip/Chip006_1K-JPG_Roughness.jpg" id="4_1gwso"]
+
+[resource]
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_q3m56")
+roughness_texture = ExtResource("4_1gwso")
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("3_fwlly")
+uv1_scale = Vector3(0.02, 0.02, 0.02)
+uv1_offset = Vector3(0, 0, 0.072)
+uv1_triplanar = true

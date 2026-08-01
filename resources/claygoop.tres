@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c33xpnw2mqqjn"]
+
+[ext_resource type="Shader" uid="uid://kcu8qhrb6nh6" path="res://shaders-general/scatterglass.gdshader" id="1_nsy3j"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nsy3j")
+shader_parameter/color = Color(1.732707e-06, 0.40845203, 0.3636756, 1)
+shader_parameter/color_coat = 0.0
+shader_parameter/oilyness = 0.23999999463552
+shader_parameter/rim_amount = 0.27999999374144
+shader_parameter/rim_shape = 4.0
+shader_parameter/rim_color = Color(0.34750524, 0, 0.083677895, 1)
+shader_parameter/roughness = 0.2
+shader_parameter/specular = 0.8
+shader_parameter/refraction_strength = 0.5
+shader_parameter/scatter_strength = 0.5
+shader_parameter/tile_size = Vector2(10, 10)

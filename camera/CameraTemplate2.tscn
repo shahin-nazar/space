@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ch2xgvxuc7uy6"]
+
+[ext_resource type="Script" uid="uid://dpk8ht1n3u213" path="res://camera/scripts/PlayerFollowPlane.gd" id="1_xexy7"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="2_7abv1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcbcq"]
+size = Vector3(46, 20, 77)
+
+[node name="Room1" type="Camera3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+script = ExtResource("1_xexy7")
+
+[node name="Area3D" type="Area3D" parent="."]
+top_level = true
+script = ExtResource("2_7abv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23168945, 9.5, -4.079954)
+shape = SubResource("BoxShape3D_bcbcq")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="exit_trigger"]

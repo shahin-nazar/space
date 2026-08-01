@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cibe15trlkem4"]
+
+[ext_resource type="Texture2D" uid="uid://cxgwxiq2rx2pn" path="res://textures/DIY-textures/plasterwall.png" id="1_1cmpg"]
+
+[resource]
+albedo_texture = ExtResource("1_1cmpg")
+uv1_scale = Vector3(0.12, 0.12, 0.12)
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://buln76gn66ogq"]
+
+[ext_resource type="Shader" uid="uid://ya3manvn8qya" path="res://medieval-water.gdshader" id="1_8q6ni"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8q6ni")
+shader_parameter/water_color = Color(0.4, 0, 0.10980392, 1)
+shader_parameter/water_metallic = 0.0
+shader_parameter/water_roughness = 0.75
+shader_parameter/water_specular = 0.9430000447925
+shader_parameter/wave_speed = 0.73600003496
+shader_parameter/wave_scale = 44.026002043735
+shader_parameter/wave_normal_strength = 0.0
+shader_parameter/foam_amount = 0.5550000263625
+shader_parameter/foam_color = Color(0.9658211, 0.8658738, 0.8668361, 1)
+shader_parameter/foam_animation_speed = 0.1930000091675
+shader_parameter/foam_detail = 195.6210088169975

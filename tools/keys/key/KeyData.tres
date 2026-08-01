@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://h81at00vcej6"]
+
+[ext_resource type="Script" path="res://tools/tooldata-resource.gd" id="1_yvap7"]
+
+[resource]
+script = ExtResource("1_yvap7")
+id = &"Key"
+display_name = "Key"
+visual_scene_path = "uid://djegfut3wv8q7"
+rigidbody_scene_path = "uid://clpnggka27uko"
+metadata/_custom_type_script = "uid://hjfvxj2fvl3e"

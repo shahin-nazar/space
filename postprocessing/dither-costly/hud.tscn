@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dnnb4jpj325cr"]
+
+[ext_resource type="Shader" uid="uid://5hrdsxb7eel" path="res://shaders-general/crt.gdshader" id="1_rb5xp"]
+[ext_resource type="Shader" uid="uid://dlosabwrouhft" path="res://psxshader.gdshader" id="2_m04q6"]
+[ext_resource type="Shader" uid="uid://sqwnsljxgnal" path="res://custom-dither.gdshader" id="3_dayvg"]
+[ext_resource type="Texture2D" uid="uid://c7i1bo7bv0ak8" path="res://textures/BlueNoise64Tiled.png" id="4_d2ap1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1v5b"]
+shader = ExtResource("1_rb5xp")
+shader_parameter/color_bit_depth = 4
+shader_parameter/dither_strength = 0.03
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0070000003325
+shader_parameter/scanlines_width = 0.018000000855
+shader_parameter/grille_opacity = 0.0190000009025
+shader_parameter/resolution = Vector2(800, 800)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.2
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.026000001235
+shader_parameter/noise_opacity = 0.046000002185
+shader_parameter/noise_speed = 0.325
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 0.01000004797499998
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.146000006935
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wygdx"]
+shader = ExtResource("2_m04q6")
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 0.01
+shader_parameter/static_noise_intensity = 0.02000000095
+shader_parameter/resolution_x = 800
+shader_parameter/resolution_y = 800
+shader_parameter/color_bit_depth = 4
+shader_parameter/dither_strength = 0.001
+shader_parameter/jitter_amount = 0.001
+shader_parameter/jitter_speed = 0.01
+shader_parameter/jitter_frequency = 0.1
+shader_parameter/chromatic_aberration_strength = 0.010000000475
+shader_parameter/vignette_strength = 0.8
+shader_parameter/vignette_radius = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bah7m"]
+shader = ExtResource("3_dayvg")
+shader_parameter/ab_scale = 0.7
+shader_parameter/sigma = 0.06
+shader_parameter/jitter_strength = 0.0
+shader_parameter/palette_count = 8
+shader_parameter/palette_lab = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_rgb = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/use_blue_noise = true
+shader_parameter/blue_noise_tex = ExtResource("4_d2ap1")
+shader_parameter/noise_tex_size = Vector2(64, 64)
+
+[node name="HUD" type="CanvasLayer" unique_id=2065202787]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1820930275]
+visible = false
+material = SubResource("ShaderMaterial_p1v5b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1396004478]
+visible = false
+material = SubResource("ShaderMaterial_wygdx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1361041772]
+visible = false
+material = SubResource("ShaderMaterial_bah7m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DitherOutput" type="TextureRect" parent="." unique_id=1607243383]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

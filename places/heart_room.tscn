@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://duhguxe2ly2je"]
+
+[ext_resource type="Material" uid="uid://dr3t5sgo5q852" path="res://textures/PurpleCheckers.tres" id="1_vtalv"]
+[ext_resource type="Script" uid="uid://codohthflstce" path="res://camera/scripts/PlayerFollowRotate.gd" id="2_x8j66"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="3_7c13h"]
+[ext_resource type="PackedScene" uid="uid://cynh1klmitrh6" path="res://tools/spear/spear.tscn" id="4_ilfyu"]
+[ext_resource type="PackedScene" uid="uid://cctltj2b7doid" path="res://tools/keys/turnkey/turnkey.tscn" id="5_47o25"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eu7l1"]
+radius = 38.543
+
+[node name="HeartRoom" type="CSGSphere3D" unique_id=1780552729]
+operation = 2
+use_collision = true
+radius = 38.0
+rings = 8
+material = ExtResource("1_vtalv")
+
+[node name="InnerWall" type="CSGSphere3D" parent="." unique_id=1674925405]
+operation = 2
+radius = 37.2
+material = ExtResource("1_vtalv")
+
+[node name="Door1" type="CSGCylinder3D" parent="." unique_id=425302892]
+transform = Transform3D(-4.3711385e-08, -4.3711392e-08, -1, -1, -4.371139e-08, 4.371139e-08, -4.3711392e-08, 1, -4.371139e-08, 0, 0, -36.037582)
+operation = 2
+radius = 8.595
+height = 11.247
+
+[node name="Door2" type="CSGCylinder3D" parent="." unique_id=1500889923]
+transform = Transform3D(-4.3711385e-08, -4.3711392e-08, -1, -1, -4.371139e-08, 4.371139e-08, -4.3711392e-08, 1, -4.371139e-08, 0, 0, 36.042934)
+operation = 2
+radius = 8.595
+height = 11.247
+
+[node name="Heart" type="CSGSphere3D" parent="." unique_id=1875523132]
+radius = 4.912
+material = ExtResource("1_vtalv")
+
+[node name="Tendril1" type="CSGCylinder3D" parent="Heart" unique_id=1621431644]
+transform = Transform3D(0.9691891, -0.24629074, -0.00364603, 0.24513605, 0.9658821, -0.08354653, 0.02409837, 0.08007862, 0.9964972, -0.35209778, 1.2150229, 0)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril2" type="CSGCylinder3D" parent="Heart" unique_id=290135882]
+transform = Transform3D(0.4872204, 0.63852286, 0.5957389, -0.79499525, 0.6066156, -4.3369823e-08, -0.36138454, -0.47360957, 0.8031782, 0.8450347, 0.93334466, -0.633776)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril3" type="CSGCylinder3D" parent="Heart" unique_id=597902079]
+transform = Transform3D(-0.0992855, 0.37236276, -0.92276126, -0.9662422, -0.25763547, -1.9022792e-08, -0.23773603, 0.89161086, 0.38537207, 0.4929369, -0.4046269, 1.1267129)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril4" type="CSGCylinder3D" parent="Heart" unique_id=1670483947]
+transform = Transform3D(-0.9745208, 0.2242971, 0, -0.2242971, -0.9745208, 0, 0, 0, 1, 0.4225174, -1.5313398, 0)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril5" type="CSGCylinder3D" parent="Heart" unique_id=1653702333]
+transform = Transform3D(-0.4995687, -0.632081, 0.5923721, 0.78454614, -0.6200704, -8.494667e-09, 0.3673124, 0.46474326, 0.8056645, -0.8450347, -0.96798337, 0.633776)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril6" type="CSGCylinder3D" parent="Heart" unique_id=1109678015]
+transform = Transform3D(-0.79708195, 0.6036807, 0.015169532, -0.101745196, -0.1094952, -0.98876625, -0.5952381, -0.7896712, 0.14869824, 0.77461505, -0.19336823, -1.1267129)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Tendril7" type="CSGCylinder3D" parent="Heart" unique_id=1185266492]
+transform = Transform3D(0.3279831, -0.9446836, 0, 0.9446836, 0.3279831, 0, 0, 0, 1, -1.1971325, 0.36998823, 0)
+height = 100.502
+material = ExtResource("1_vtalv")
+
+[node name="Room1" type="Camera3D" parent="." unique_id=1398333013 node_paths=PackedStringArray("player", "inner_wall")]
+current = true
+fov = 46.0
+script = ExtResource("2_x8j66")
+player = NodePath("")
+height = 7.23
+inner_wall = NodePath("../InnerWall")
+
+[node name="Area3D" type="Area3D" parent="Room1" unique_id=790857373]
+script = ExtResource("3_7c13h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1/Area3D" unique_id=686521738]
+shape = SubResource("SphereShape3D_eu7l1")
+
+[node name="SpearFinal" parent="." unique_id=1065546641 instance=ExtResource("4_ilfyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.436998, -2, -6.028)
+
+[node name="Turnkey" parent="." unique_id=607201445 instance=ExtResource("5_47o25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.894997, 6, -5.3969994)

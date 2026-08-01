@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dj5av54s4vlae"]
+
+[ext_resource type="Texture2D" uid="uid://cnme3t067ic5b" path="res://textures/clays/Ground050_1K-JPG_Color.jpg" id="1_1rhna"]
+[ext_resource type="Texture2D" uid="uid://oaxrqwfoi3fb" path="res://textures/clays/Ground050_1K-JPG_NormalDX.jpg" id="2_0yxfj"]
+[ext_resource type="Texture2D" uid="uid://cfxc3k32qbova" path="res://textures/clays/Ground050_1K-JPG_Roughness.jpg" id="3_q7nd7"]
+
+[resource]
+albedo_texture = ExtResource("1_1rhna")
+roughness_texture = ExtResource("3_q7nd7")
+normal_enabled = true
+normal_texture = ExtResource("2_0yxfj")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true

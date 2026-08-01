@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://clpnggka27uko"]
+
+[ext_resource type="Script" uid="uid://ct0ugoilb2yhg" path="res://tools/keys/ToolPickup.gd" id="1_03yad"]
+[ext_resource type="Resource" uid="uid://h81at00vcej6" path="res://tools/keys/key/KeyData.tres" id="2_c0yrt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0yrt"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3yr3"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_skqfo"]
+material = SubResource("StandardMaterial3D_m3yr3")
+size = Vector3(0.2, 0.2, 1)
+
+[node name="key-rigidbody" type="RigidBody3D" unique_id=469881311 groups=["tools"]]
+script = ExtResource("1_03yad")
+tool_data = ExtResource("2_c0yrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1156526482]
+shape = SubResource("BoxShape3D_c0yrt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2081068770]
+mesh = SubResource("PrismMesh_skqfo")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2066026384]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=823817415]
+shape = SubResource("BoxShape3D_c0yrt")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bvekju5208kek"
+path="res://.godot/imported/dither_diffusion.glsl-ee05596a2a774c6d3b0f604ec6edbee3.res"
+
+[deps]
+
+source_file="res://postprocessing/dither-costly/dither_diffusion.glsl"
+dest_files=["res://.godot/imported/dither_diffusion.glsl-ee05596a2a774c6d3b0f604ec6edbee3.res"]
+
+[params]
+

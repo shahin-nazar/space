@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cyx7t5i0plmtn"]
+
+[ext_resource type="Material" uid="uid://dj5av54s4vlae" path="res://resources/stairslevel.tres" id="1_xqcvw"]
+[ext_resource type="Material" path="res://textures/AmbientCG/Fence008C_2K-JPG.tres" id="2_7rfuj"]
+[ext_resource type="PackedScene" uid="uid://cctltj2b7doid" path="res://tools/keys/turnkey/turnkey.tscn" id="3_6qp5x"]
+[ext_resource type="Script" uid="uid://dpjjqcedvpruq" path="res://camera/scripts/FixedCamera.gd" id="4_ba0ey"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="5_imvj2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p1v5b"]
+height = 100.0
+radius = 25.0
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" unique_id=519650054]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1060466950]
+transform = Transform3D(0.19453499, 0, 0, 0, 0.19453499, 0, 0, 0, 0.19453499, 0, 0, 0)
+use_collision = true
+
+[node name="OuterCyl" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1512360182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+radius = 50.0
+height = 50.0
+sides = 16
+material = ExtResource("1_xqcvw")
+
+[node name="OutercylInvisible" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2045502344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+operation = 2
+radius = 49.0
+height = 55.0
+sides = 16
+material = ExtResource("2_7rfuj")
+
+[node name="Midboxcut" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1330609552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 7, 0)
+operation = 2
+size = Vector3(80, 200, 150)
+
+[node name="Midboxcut2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=467732323]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 47.576126, 11.999999, -7.815339)
+operation = 2
+size = Vector3(20, 20, 16)
+
+[node name="Midboxcut3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1520731091]
+transform = Transform3D(0.49999994, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999994, 27.308817, 12, -41.421997)
+operation = 2
+size = Vector3(20, 20, 20)
+
+[node name="Midboxcut4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=325123853]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, 27.308819, 38, -41.422)
+operation = 2
+size = Vector3(20, 20, 20)
+
+[node name="Midboxcut5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1730202294]
+transform = Transform3D(0.8660253, 0, 0.49999994, 0, 1, 0, -0.49999994, 0, 0.8660253, 25.449837, 38, 41.797844)
+operation = 2
+size = Vector3(20, 20, 20)
+
+[node name="Midboxcut6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1730375539]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, 41.136368, 38, 26.967718)
+operation = 2
+size = Vector3(20, 20, 20)
+
+[node name="Turnkey" parent="CSGCombiner3D" unique_id=607201445 instance=ExtResource("3_6qp5x")]
+transform = Transform3D(5.1404634, 0, 0, 0, 5.1404634, 0, 0, 0, 5.1404634, 30.84278, 20.561853, -5.1404634)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=1688946743]
+transform = Transform3D(0.19453499, 0, 0, 0, 0.19453499, 0, 0, 0, 0.19453499, 0, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=107259606]
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1839791899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 25, 0)
+size = Vector3(3, 50, 100)
+
+[node name="Tower" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=1716057028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+radius = 5.0
+height = 50.0
+
+[node name="Room1" type="Camera3D" parent="." unique_id=1519419686]
+transform = Transform3D(-3.585297e-08, 0.5720477, -0.8202204, 2.5004999e-08, 0.8202204, 0.5720477, 1, 0, -4.3711392e-08, 1.0121737, 10.16882, -0.08400108)
+current = true
+fov = 46.0
+script = ExtResource("4_ba0ey")
+follow_x = false
+follow_z = false
+
+[node name="Area3D" type="Area3D" parent="Room1" unique_id=799847693]
+top_level = true
+script = ExtResource("5_imvj2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1/Area3D" unique_id=5376615]
+shape = SubResource("CylinderShape3D_p1v5b")
+
+[connection signal="body_entered" from="Room1/Area3D" to="Room1/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Room1/Area3D" to="Room1/Area3D" method="exit_trigger"]

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://d2lpfpkvf85xa"]
+
+[ext_resource type="Script" uid="uid://byjhyv1paflug" path="res://interactables/door/door.gd" id="1_rixxk"]
+[ext_resource type="Shader" uid="uid://kcu8qhrb6nh6" path="res://shaders-general/scatterglass.gdshader" id="2_fvktp"]
+[ext_resource type="Material" uid="uid://12kopgl8m8j5" path="res://interactables/door/doormaterial.tres" id="3_s72c1"]
+[ext_resource type="Material" uid="uid://cwvfnncph4flq" path="res://interactables/light-indicators/light_indicator.tres" id="5_jt0h7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn3wo"]
+size = Vector3(1, 4, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huyys"]
+render_priority = 0
+shader = ExtResource("2_fvktp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_coat = 0.0
+shader_parameter/oilyness = 0.1
+shader_parameter/rim_amount = 0.2
+shader_parameter/rim_shape = 4.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.2
+shader_parameter/specular = 0.8
+shader_parameter/refraction_strength = 0.5
+shader_parameter/scatter_strength = 0.5
+shader_parameter/tile_size = Vector2(10, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sx8fv"]
+material = SubResource("ShaderMaterial_huyys")
+radius = 2.8
+height = 5.9
+radial_segments = 16
+rings = 16
+
+[node name="Node3D" type="StaticBody3D" unique_id=872745396]
+script = ExtResource("1_rixxk")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=514691679]
+transform = Transform3D(1, -7.642742e-15, -8.742278e-08, 0, 1, -8.742278e-08, -8.742278e-08, -8.742278e-08, -1, 0, 0, -7.241003)
+light_color = Color(1, 0.8725144, 0.88147736, 1)
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+spot_range = 12.0
+spot_angle = 16.361217
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1807946747]
+transform = Transform3D(0.503, 0, 0, 0, 0.503, 0, 0, 0, 0.503, 0, 0, 0)
+shape = SubResource("BoxShape3D_bn3wo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D" unique_id=32829392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.338768, 0, 0, -1.7277168)
+mesh = SubResource("SphereMesh_sx8fv")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=350075841]
+transform = Transform3D(0.503, 0, 0, 0, 0.503, 0, 0, 0, 0.503, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1508087408]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 3.5
+height = 4.0
+sides = 16
+material = ExtResource("3_s72c1")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1554545777]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+operation = 2
+radius = 2.8
+height = 5.0
+sides = 16
+material = ExtResource("3_s72c1")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=1480191494]
+transform = Transform3D(-0.503, 0, -4.3973657e-08, 0, 0.503, 0, 4.3973657e-08, 0, -0.503, 1.7050004, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=928776093]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+height = 4.25
+material = ExtResource("3_s72c1")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D2" unique_id=1777802091]
+transform = Transform3D(0.577, 0, 0, 0, -2.5221471e-08, -0.577, 0, 1.5630931, -6.832497e-08, 0.15705776, -0.4771372, 0)
+height = 3.25
+material = ExtResource("3_s72c1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D2" unique_id=1758062001]
+transform = Transform3D(0.49705595, 0, 0, 0, 0.49705595, 0, 0, 0, 0.49705595, 0, 0, 2.2723653)
+radial_segments = 6
+material = ExtResource("5_jt0h7")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D2" unique_id=1155967397]
+transform = Transform3D(0.30121592, 0, 0, 0, 0.30121592, 0, 0, 0, 0.30121592, 0.15705776, -0.4771372, 2.5188859)
+radial_segments = 6
+material = ExtResource("5_jt0h7")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://dftt2hd4m1aew"]
+
+[ext_resource type="Script" path="res://tools/tooldata-resource.gd" id="1_2f7j2"]
+
+[resource]
+script = ExtResource("1_2f7j2")
+id = &"turnkey"
+display_name = "Turnkey"
+visual_scene_path = "uid://btisb4clspqx2"
+rigidbody_scene_path = "uid://cctltj2b7doid"
+metadata/_custom_type_script = "uid://hjfvxj2fvl3e"

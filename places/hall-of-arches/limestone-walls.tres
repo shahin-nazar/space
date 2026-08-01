@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yoljfnc0dfm5"]
+
+[ext_resource type="Texture2D" uid="uid://6851hwjg7fb5" path="res://textures/flesh/others_0001_roughness_2k.jpg" id="1_4ruse"]
+[ext_resource type="Texture2D" uid="uid://cs08tlfbouyx5" path="res://textures/chip/Chip006_1K-JPG_Metalness.jpg" id="2_te8pg"]
+[ext_resource type="Texture2D" uid="uid://cqpc4n1bcrix5" path="res://textures/flesh/others_0001_normal_directx_2k.png" id="3_nmr85"]
+[ext_resource type="Texture2D" uid="uid://lewn6y1gh54y" path="res://textures/chip/Chip006_1K-JPG_Roughness.jpg" id="4_s3ww1"]
+
+[resource]
+albedo_color = Color(0.8980392, 0, 0.37254903, 1)
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_te8pg")
+roughness_texture = ExtResource("4_s3ww1")
+emission_enabled = true
+emission_texture = ExtResource("1_4ruse")
+normal_enabled = true
+normal_texture = ExtResource("3_nmr85")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true

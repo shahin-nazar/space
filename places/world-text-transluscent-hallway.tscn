@@ -1,0 +1,355 @@
+[gd_scene format=3 uid="uid://imo4eby6sdro"]
+
+[ext_resource type="PackedScene" uid="uid://dn540qhfhtmdr" path="res://objects/world-text.tscn" id="1_tra5l"]
+[ext_resource type="Script" uid="uid://dlm0d0e2td8vm" path="res://sprite3d.gd" id="2_814iy"]
+[ext_resource type="FontFile" uid="uid://ug81fgiunlmr" path="res://fonts/EVA-MATISSE_CLASSIC.TTF" id="3_i26if"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv4w7"]
+viewport_path = NodePath("texts/Text2/Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fv4w7"]
+font = ExtResource("3_i26if")
+font_color = Color(0.7607843, 0.42352942, 0.4627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kva58"]
+viewport_path = NodePath("texts/Text3/Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kva58"]
+font = ExtResource("3_i26if")
+font_color = Color(0.21568628, 0.6627451, 0.3529412, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ee7l0"]
+viewport_path = NodePath("texts/Text6/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gn8l5"]
+viewport_path = NodePath("texts/Text7/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6tx0c"]
+viewport_path = NodePath("texts/Text8/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1fphk"]
+viewport_path = NodePath("texts/Text9/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5j71u"]
+viewport_path = NodePath("texts/Text9/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0to5b"]
+viewport_path = NodePath("texts/Text11/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cvq6i"]
+viewport_path = NodePath("texts/Text12/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sjtuv"]
+viewport_path = NodePath("texts/Text10/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6w02q"]
+viewport_path = NodePath("texts/Text8/Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ee7l0"]
+font = ExtResource("3_i26if")
+font_size = 40
+font_color = Color(0.21568628, 0.6627451, 0.3529412, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f5c0m"]
+viewport_path = NodePath("texts/Text4/Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fvag4"]
+font = ExtResource("3_i26if")
+font_color = Color(0.7607843, 0.42352942, 0.4627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b2ar6"]
+viewport_path = NodePath("texts/Text5/Sprite3D/SubViewport")
+
+[node name="texts" type="Node3D" unique_id=1717795334]
+
+[node name="Text1" parent="." unique_id=530388153 instance=ExtResource("1_tra5l")]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412952, -8.312642e-08, 3.8413324, -1.6864702e-07, -1.9017093, -1.6864703e-07, -0.01685899, 0.357, 2.918, -16.262)
+
+[node name="Text2" type="Node3D" parent="." unique_id=1856654085]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 2.9180007, -37.373013)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text2" unique_id=1183364748]
+transform = Transform3D(0.9999997, -2.1316282e-14, 0, 0, 0.9999997, -6.1062266e-16, 4.656613e-10, -7.3552275e-16, 1, -0.00063323975, -0.5425199, 0.071328685)
+texture_filter = 5
+texture = SubResource("ViewportTexture_fv4w7")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text2/Sprite3D" unique_id=1351897060]
+transparent_bg = true
+size = Vector2i(411, 18)
+
+[node name="SoTheyCouldKeep" type="Label" parent="Text2/Sprite3D/SubViewport" unique_id=85419369]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "To keep you in line."
+label_settings = SubResource("LabelSettings_fv4w7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text3" type="Node3D" parent="." unique_id=1084178462]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 2.9180007, -53.46601)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text3" unique_id=1553930209]
+transform = Transform3D(0.99999994, -7.1054274e-15, 0, 0, 0.99999994, -6.1062266e-16, 0, -6.5225603e-16, 1, 0.00037384033, 0, -0.04217246)
+texture = SubResource("ViewportTexture_kva58")
+script = ExtResource("2_814iy")
+girl_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text3/Sprite3D" unique_id=1218517803]
+transparent_bg = true
+size = Vector2i(474, 18)
+
+[node name="Label" type="Label" parent="Text3/Sprite3D/SubViewport" unique_id=1248621509]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "But, they loved me."
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text6" type="Node3D" parent="." unique_id=1965124190]
+transform = Transform3D(-0.008346377, 1.6790848e-07, 3.8412955, -8.3126416e-08, 3.8413324, -1.6864702e-07, -1.9017094, -1.6864702e-07, -0.016858991, 0.5970001, 3.0390005, -60.32302)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text6" unique_id=1403486938]
+transform = Transform3D(0.8912405, -3.637979e-12, 0, 3.5527137e-15, 1.3561788, -0.0017453299, 0, 0.0023669812, 0.9999994, 1.6011925, -0.5586607, 0.11880475)
+texture = SubResource("ViewportTexture_ee7l0")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text6/Sprite3D" unique_id=1441572353]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text6/Sprite3D/SubViewport" unique_id=1239594943]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "They took you apart."
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text7" type="Node3D" parent="." unique_id=2109526927]
+transform = Transform3D(-0.008346376, 1.8620541e-07, 3.8412955, 0.2072258, 3.818458, 0.0018369087, -1.8903852, 0.41858315, -0.01675862, 1.8500004, 1.9330013, -67.42702)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text7" unique_id=1093941466]
+transform = Transform3D(0.9999994, 0, 0, 2.6077032e-08, 0.9999999, 0, 0, 2.3283064e-10, 1, 1.2487373, -0.10082209, 0.7503776)
+texture = SubResource("ViewportTexture_gn8l5")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text7/Sprite3D" unique_id=1331028727]
+transparent_bg = true
+size = Vector2i(333, 18)
+
+[node name="Label" type="Label" parent="Text7/Sprite3D/SubViewport" unique_id=1043667012]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welded you in that thing."
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text8" type="Node3D" parent="." unique_id=140406411]
+transform = Transform3D(-0.008346315, 3.308606e-07, 3.8412955, 1.8455583, 0.92656386, 0.016360998, -0.4587094, 3.7279105, -0.0040668296, 0.40099716, -3.7830017, -77.67202)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text8" unique_id=1111654295]
+transform = Transform3D(0.9999999, 0, 7.2759576e-09, 5.9604645e-08, 0.9999999, 9.313226e-10, 2.1827873e-10, 9.313226e-10, 1, 3.9216352, -0.03904152, -0.0037145317)
+texture = SubResource("ViewportTexture_6tx0c")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text8/Sprite3D" unique_id=924996488]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text8/Sprite3D/SubViewport" unique_id=137878943]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Over"
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text9" type="Node3D" parent="." unique_id=6884273]
+transform = Transform3D(-0.008346378, 1.6690106e-07, 3.8412955, -0.011410013, 3.8412635, -0.00010131975, -1.9016752, -0.023047538, -0.016858691, 2.2080002, 3.6140018, -74.30002)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text9" unique_id=1941656005]
+transform = Transform3D(0.86119485, 1.0266709, -0.001230563, -0.25163102, 0.8611922, -0.0022307257, -0.00030158216, 0.0022307378, 0.9999973, 4.6378975, -0.49357843, -0.4707501)
+texture = SubResource("ViewportTexture_1fphk")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text9/Sprite3D" unique_id=815576169]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text9/Sprite3D/SubViewport" unique_id=141730784]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "and over"
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text14" type="Node3D" parent="." unique_id=1820321927]
+transform = Transform3D(-0.008346378, 1.6690106e-07, 3.8412955, -0.011410013, 3.8412635, -0.00010131975, -1.9016752, -0.023047538, -0.016858691, 2.2080002, 3.6140018, -74.30002)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text14" unique_id=1128244341]
+transform = Transform3D(0.8611944, 1.0266705, -0.0012305588, -0.25163093, 0.8611922, -0.0022307257, -0.0003015832, 0.0022307367, 0.9999973, 5.468899, -0.72540754, -0.46894473)
+texture = SubResource("ViewportTexture_5j71u")
+script = ExtResource("2_814iy")
+girl_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text14/Sprite3D" unique_id=1097697077]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text14/Sprite3D/SubViewport" unique_id=1638353119]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "and over"
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text11" type="Node3D" parent="." unique_id=401204860]
+transform = Transform3D(-0.0054927142, 0.018794382, 3.8412714, 1.0662163, 3.1807964, -0.009342356, -1.5747133, 2.1536064, -0.019724207, 2.123991, -0.356997, -79.82802)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text11" unique_id=56795356]
+transform = Transform3D(0.9748304, -0.45027274, 0.007400799, 0.11035778, 0.97483766, 0.0012862915, -0.0019102046, -0.00043719006, 0.9999924, 3.9312515, -0.26103306, -0.45129684)
+texture = SubResource("ViewportTexture_0to5b")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text11/Sprite3D" unique_id=1162194109]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text11/Sprite3D/SubViewport" unique_id=1385898916]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "and over again."
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text12" type="Node3D" parent="." unique_id=757151873]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 2.2080002, 3.0980005, -66.29802)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text12" unique_id=958736797]
+transform = Transform3D(0.86119497, 1.0266707, -0.001230564, -0.25163096, 0.8611922, -0.002230725, -0.00030158262, 0.0022307371, 0.9999973, 4.072544, -0.3259282, -0.46234632)
+texture = SubResource("ViewportTexture_cvq6i")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text12/Sprite3D" unique_id=1104444936]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text12/Sprite3D/SubViewport" unique_id=1444235689]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Put you back together"
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text10" type="Node3D" parent="." unique_id=262593762]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 3.0810003, -88.009026)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text10" unique_id=1964393141]
+transform = Transform3D(0.9999997, -2.1316282e-14, 0, 0, 0.9999997, -6.1062266e-16, 4.656613e-10, -7.3552275e-16, 1, 7.290741, -0.5703746, 2.2026043)
+texture = SubResource("ViewportTexture_sjtuv")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text10/Sprite3D" unique_id=1892012177]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text10/Sprite3D/SubViewport" unique_id=535708097]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Was it ever enough?"
+label_settings = SubResource("LabelSettings_kva58")
+
+[node name="Text13" type="Node3D" parent="." unique_id=706241152]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 2.0540004, -104.94703)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text13" unique_id=1956872789]
+transform = Transform3D(0.99999976, -1.4210855e-14, 0, 0, 0.99999976, -6.1062266e-16, 4.656613e-10, -7.2164497e-16, 1, 3.9132576, -0.038788557, -0.051893562)
+texture = SubResource("ViewportTexture_6w02q")
+script = ExtResource("2_814iy")
+parasite_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text13/Sprite3D" unique_id=96249121]
+transparent_bg = true
+size = Vector2i(1305, 50)
+
+[node name="Label" type="Label" parent="Text13/Sprite3D/SubViewport" unique_id=254652164]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Is that what your species call                love?"
+label_settings = SubResource("LabelSettings_ee7l0")
+
+[node name="Text4" type="Node3D" parent="." unique_id=1817483357]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 2.9180007, -93.82601)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text4" unique_id=667755178]
+transform = Transform3D(0.99999934, -4.2632564e-14, 0, -1.7763568e-15, 0.9999993, -6.1062266e-16, 6.9849193e-10, 2.6922908e-15, 1, 20.32251, -0.5550151, 0.1456852)
+texture = SubResource("ViewportTexture_f5c0m")
+script = ExtResource("2_814iy")
+girl_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text4/Sprite3D" unique_id=371783315]
+transparent_bg = true
+size = Vector2i(323, 18)
+
+[node name="Label" type="Label" parent="Text4/Sprite3D/SubViewport" unique_id=702751948]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Without it, I wouldn't have survived."
+label_settings = SubResource("LabelSettings_fvag4")
+
+[node name="Text5" type="Node3D" parent="." unique_id=1354146844]
+transform = Transform3D(-0.008346377, 1.6790847e-07, 3.8412955, -8.312642e-08, 3.8413324, -1.68647e-07, -1.9017094, -1.68647e-07, -0.016858991, 0.5970001, 2.9180007, -115.29702)
+
+[node name="Sprite3D" type="Sprite3D" parent="Text5" unique_id=401572977]
+transform = Transform3D(0.9999995, -2.842171e-14, 0, -1.7763568e-15, 0.9999995, -6.1062266e-16, 4.656613e-10, -8.049117e-16, 1, 15.572433, -0.52585876, 0.10256255)
+texture = SubResource("ViewportTexture_b2ar6")
+script = ExtResource("2_814iy")
+girl_toggle = true
+
+[node name="SubViewport" type="SubViewport" parent="Text5/Sprite3D" unique_id=1564437868]
+transparent_bg = true
+size = Vector2i(239, 18)
+
+[node name="Label" type="Label" parent="Text5/Sprite3D/SubViewport" unique_id=286269258]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Will we... survive?"
+label_settings = SubResource("LabelSettings_kva58")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=4 uid="uid://cln4w3g5qbw2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6vx6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_utp87"]
+_surfaces = [{
+"aabb": AABB(-0.35999995, -0.18000007, -0.18617654, 0.72, 0.36000013, 0.3599999),
+"format": 34359742465,
+"index_count": 51,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAQAEAAIAAwAAAAUAAwAGAAQABgADAAUAAAAHAAUAAAACAAcACAAGAAUACAAFAAcABgAJAAQABgAIAAkAAgAEAAkACAAHAAkABwACAAkACQACAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("7lG4PuhROD7A/jE+eVWCPvBROL6AWKW97FG4PvBROL7A/jE+e1WCPuhROD6AWKW94kW2s+xROL4QpT6+6FG4vvBROD7A/jE+/xMDs+xROD4QpT6+6lG4vuhROL7A/jE+e1WCvu5ROD5gWKW9fVWCvuhROL5gWKW9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0vv4l"]
+resource_name = "ship-parts_Cylinder_006"
+_surfaces = [{
+"aabb": AABB(-0.35999995, -0.18000007, -0.18617654, 0.72, 0.36000013, 0.3599999),
+"attribute_data": PackedByteArray("AABAPwAAAD8AACA/AAAAAAAAQD8AAAAAAAAgPwAAAD8AACA/AAAAPwAAAD8AAAAAAAAgPwAAAAAAAAA/AAAAPwAAAD8AAAA/AADAPgAAAAAAAAA/AAAAAAAAwD4AAAA/AADAPgAAAD8AAIA+AAAAAAAAwD4AAAAAAACAPgAAAD8AACA/AAAAPwAAQD8AAAA/AAAAAAAAgD8AAAA/AAAAPwAAwD4AAAA/AACAPgAAAD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAPwAAAAAAAMA+AAAAAAAAID8AAAAAAABAPwAAAD8AAIA+AAAAAAAAAAAAAIA/AAAAAAAAgD8="),
+"format": 34359742487,
+"index_count": 51,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEwAQABIAFAATABUAFgAXABgAGAAXABkAGgAbABwAHQAbABoAHgAfACAAHgAhAB8A"),
+"material": SubResource("StandardMaterial3D_w6vx6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 34,
+"vertex_data": PackedByteArray("7lG4PuhROD7A/jE+eVWCPvBROL6AWKW97FG4PvBROL7A/jE+e1WCPuhROD6AWKW9e1WCPuhROD6AWKW94kW2s+xROL4QpT6+eVWCPvBROL6AWKW9/xMDs+xROD4QpT6+/xMDs+xROD4QpT6+fVWCvuhROL5gWKW94kW2s+xROL4QpT6+e1WCvu5ROD5gWKW9e1WCvu5ROD5gWKW96lG4vuhROL7A/jE+fVWCvuhROL5gWKW96FG4vvBROD7A/jE+e1WCPuhROD6AWKW97lG4PuhROD7A/jE+6FG4vvBROD7A/jE+/xMDs+xROD4QpT6+e1WCvu5ROD5gWKW96FG4vvBROD7A/jE+6lG4vuhROL7A/jE+7FG4PvBROL7A/jE+fVWCvuhROL5gWKW9e1WCvu5ROD5gWKW97FG4PvBROL7A/jE+4kW2s+xROL4QpT6+fVWCvuhROL5gWKW9eVWCPvBROL6AWKW97lG4PuhROD7A/jE+6lG4vuhROL7A/jE+6FG4vvBROD7A/jE+7FG4PvBROL7A/jE+//99pX2l/7///32lfaX/v///faV9pf+///99pX2l/7///4Hagdr/v///gdqB2v+///+B2oHa/7///4Hagdr/vwAAgdr+/0CtAACB2v7/QK0AAIHa/v9ArQAAgdr//0CtAAB9pf//vpIAAH2l//++kgAAfaX//0DtAAB9pf//vpL/f///Kbf/v/9///98pf+//3////+//7//f///////v/9///////+//3///////7+20KQX////v7bQpBf///+/ttCkF////7+20KQX////v/9/AAD///8//38AAP//JjL/fwAA//9BLf9/AACB2v8//3//f/+//9//f/9//7//3/9//39l5jMz/3//f/+//98=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_utp87")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1fphk"]
+points = PackedVector3Array(-0.25456536, 0.18000004, -0.08074196, -0.25456536, -0.18000007, -0.08074196, -0.35999995, 0.18000004, 0.17382336, 0.36000007, 0.17996481, 0.17382336, 0.25449497, 0.17996481, -0.08074196, -7.042289e-05, 0.17996481, -0.18617654, -7.042289e-05, -0.18000007, -0.18617654, -0.35999995, -0.18000007, 0.17382336, 0.35992956, -0.18000007, 0.17382336, 0.25449497, -0.18000007, -0.08074196)
+
+[node name="Gun" type="RigidBody3D"]
+
+[node name="TopSideGunGeneric" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_0vv4l")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_1fphk")

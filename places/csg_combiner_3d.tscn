@@ -1,0 +1,2866 @@
+[gd_scene format=3 uid="uid://do4m3tobcpfaw"]
+
+[ext_resource type="Texture2D" uid="uid://cxgwxiq2rx2pn" path="res://textures/DIY-textures/plasterwall.png" id="1_egsp5"]
+[ext_resource type="Shader" uid="uid://b0474s3q0fiow" path="res://shaders-general/animemetal.gdshader" id="2_bcurk"]
+[ext_resource type="Shader" uid="uid://kcu8qhrb6nh6" path="res://shaders-general/scatterglass.gdshader" id="3_k1bim"]
+[ext_resource type="Script" uid="uid://dpjjqcedvpruq" path="res://camera/scripts/FixedCamera.gd" id="4_sqdfn"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="5_3012i"]
+[ext_resource type="Shader" uid="uid://cubm52v324uvu" path="res://shaders-general/additive-constant-volume.gdshader" id="6_l5l4p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvag4"]
+albedo_texture = ExtResource("1_egsp5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kva58"]
+render_priority = 0
+shader = ExtResource("2_bcurk")
+shader_parameter/base_color = Color(0.978687, 0, 0.2791312, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/specular_size = 8.0
+shader_parameter/specular_threshold = 0.5
+shader_parameter/specular_strength = 1.0
+shader_parameter/noise_pow = 2.0
+shader_parameter/noise_scl = 0.1
+shader_parameter/rim_pow = 4.0
+shader_parameter/rim_str = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvag4"]
+render_priority = 0
+shader = ExtResource("3_k1bim")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_coat = 0.0
+shader_parameter/oilyness = 0.1
+shader_parameter/rim_amount = 0.2
+shader_parameter/rim_shape = 4.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.2
+shader_parameter/specular = 0.8
+shader_parameter/refraction_strength = 0.5
+shader_parameter/scatter_strength = 0.5
+shader_parameter/tile_size = Vector2(10, 10)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bah7m"]
+material = SubResource("ShaderMaterial_fvag4")
+radial_segments = 6
+rings = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bah7m"]
+height = 70.456
+radius = 15.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_js7pq"]
+height = 37.25
+radius = 15.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bah7m"]
+height = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fv4w7"]
+render_priority = 0
+shader = ExtResource("6_l5l4p")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/density = 0.005
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fvag4"]
+material = SubResource("ShaderMaterial_fv4w7")
+top_radius = 0.1
+bottom_radius = 10.424
+height = 27.672
+
+[sub_resource type="Environment" id="Environment_js7pq"]
+background_mode = 1
+background_color = Color(0.20268068, 0.06879123, 0.02305078, 1)
+background_energy_multiplier = 0.21
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 16.0
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" unique_id=733956180]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+use_collision = true
+
+[node name="MainTorys" type="CSGTorus3D" parent="." unique_id=89752927]
+transform = Transform3D(1, 0, 0, 0, -1.7484555e-05, -1, 0, 400, -4.371139e-08, 0, 0, 0)
+inner_radius = 15.0
+outer_radius = 16.0
+ring_sides = 3
+
+[node name="Wall1" type="CSGBox3D" parent="." unique_id=800247888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 173)
+size = Vector3(40, 40, 1)
+
+[node name="Path" type="CSGBox3D" parent="." unique_id=1762198496]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.0490733e-06, 12, -29)
+size = Vector3(10, 500, 1)
+material = SubResource("StandardMaterial3D_fvag4")
+
+[node name="Line2" type="CSGBox3D" parent="." unique_id=155579420]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.000001, 11.5, -29)
+size = Vector3(0.1, 500, 0.1)
+material = SubResource("ShaderMaterial_kva58")
+
+[node name="Line1" type="CSGBox3D" parent="." unique_id=1926841626]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.999999, 11.5, -29)
+size = Vector3(0.1, 500, 0.1)
+material = SubResource("ShaderMaterial_kva58")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=368406520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 160)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=1039011827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods1" unique_id=958769798]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1735287004]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1096414961]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1993804363]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=17763317]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=909423436]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=234389223]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=86659023]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1736606739]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=818107508]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1303204185]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1266796389]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=672288263]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=862511429]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=283128886]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=815909110]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=645378169]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1383041935]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=113986090]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=880572749]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1392104349]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1417834649]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=728435329]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=538539901]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D/Pods1/CSGMesh3D" unique_id=1139535409]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=253029342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods2" unique_id=1061894364]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1617962625]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=142398520]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=562934419]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1989859617]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1863672419]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=2087596775]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1623606868]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1054824108]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1098362944]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=625010001]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=818393622]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=712246723]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1293156456]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=979193152]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1252309654]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=627192842]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=409064492]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1942515844]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1816712925]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=405904671]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1607737773]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1167611772]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=1646319135]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D/Pods2/CSGMesh3D" unique_id=2062235350]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=316167424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods3" unique_id=201556797]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=2003166831]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=466332178]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=735833794]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=702675789]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1976193109]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1100864396]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1834582479]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1597350018]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1357325871]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=2069817278]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1387372712]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1676571032]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=267776621]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=2096098851]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=911836146]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=295074846]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=2044392748]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=2144621881]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1783415780]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1313380706]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1290987546]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=1594851720]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=488033610]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D/Pods3/CSGMesh3D" unique_id=327344728]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=1733694160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods4" unique_id=441975996]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=2055207804]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=2105336229]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1709551720]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=417605450]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=408922464]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=382023447]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=422595321]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=628429905]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=58613526]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=408119948]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=894415819]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1840240314]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=179436998]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1773661236]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1036604556]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=582585512]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=2090251536]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1660021456]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=913497243]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1213681051]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1649684501]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=1536325319]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=794347859]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D/Pods4/CSGMesh3D" unique_id=323464474]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=417050368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 104)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D2" unique_id=1217082046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1" unique_id=1618701773]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1488477273]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1295817812]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=711984034]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=313033729]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1604489454]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=336735134]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=360661950]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=864865900]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1247588280]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1605930532]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=208209074]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1022184273]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=631414081]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1681046194]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=2108984682]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1735479528]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1071001522]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=469960275]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1469098050]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=2116848642]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1527962532]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=1206783118]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=596656489]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D2/Pods1/CSGMesh3D" unique_id=331991730]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D2" unique_id=375655269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2" unique_id=1176308599]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=329420889]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=585239800]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=480157771]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=982506653]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1334586885]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1877742041]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1220076607]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1349438183]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=212779406]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=120374785]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1332801730]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1599624086]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=506195008]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=778492348]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1399698025]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=729657289]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1345284602]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=860076379]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=1074181845]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=608289452]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=848290688]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=19534554]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=2139076929]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D2/Pods2/CSGMesh3D" unique_id=767921908]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D2" unique_id=101797165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3" unique_id=1226678978]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=78934645]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1082554105]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=750569710]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=2077071854]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=295284848]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1902494402]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1736044594]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1289621802]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=361578259]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1229436278]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1998742647]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=385607109]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1657108081]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1033771169]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=2047545759]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1566656691]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=113219068]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1075376557]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1206250569]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=1789130834]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=907820057]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=2093169364]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=520870896]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D2/Pods3/CSGMesh3D" unique_id=654658005]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D2" unique_id=1510397412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4" unique_id=569177464]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=805936158]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=801472374]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1818637725]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1592669847]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1217319851]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=2004276921]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=726929618]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1083768467]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1644427707]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=2007755838]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=629766565]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=638920910]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1437396652]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1971518919]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=952862540]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1356787601]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=943212421]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1563536008]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=611686655]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=777696346]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1630146534]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=1441307473]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=833101439]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D2/Pods4/CSGMesh3D" unique_id=753891924]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="." unique_id=1637244987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D3" unique_id=1015254223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1" unique_id=27413459]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1124467444]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=2009979881]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=848570193]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=122925108]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1840871129]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=150543526]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=21038080]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=268840300]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=539556264]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1979312718]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1065121293]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=579553772]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=662318432]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1123055381]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1539147524]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=99485190]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=437630466]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1366934757]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1210162092]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=152440684]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1169096687]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=612144749]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=1359209937]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D3/Pods1/CSGMesh3D" unique_id=2077306609]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D3" unique_id=1050473904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2" unique_id=2093830803]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1482980972]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1977336222]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=534587920]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=791503945]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1656186023]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=192330593]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=30729325]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=923304491]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=597657780]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1037760990]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=307836418]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1490651736]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=778628434]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1705656930]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1550678462]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1868754518]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1405869110]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1475826641]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1352653679]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=2132122462]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=335022289]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=1750100959]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=790919049]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D3/Pods2/CSGMesh3D" unique_id=2012891666]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D3" unique_id=1351074732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3" unique_id=1061347374]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=964772594]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=472409691]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1535877002]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1848446260]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=69782249]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=744474102]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=38694202]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=491628538]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=626747931]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1725520468]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=222714337]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=146064951]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=358025201]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1025888579]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=870607038]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1026809374]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=407629650]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=56690734]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1770785018]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=487248705]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1245514979]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=2127155349]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1530155020]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D3/Pods3/CSGMesh3D" unique_id=1626593169]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D3" unique_id=1843795071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4" unique_id=1456036116]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=976794697]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=2130661564]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1426824179]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=358998492]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1970950092]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1733835294]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1378923623]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1205818213]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=374998496]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1724001953]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=719725637]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1155552581]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=290943926]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1267729355]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1634288013]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=398836013]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=2087206392]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=644316058]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=894056018]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=198431768]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1209792737]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=769244270]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1849211135]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D3/Pods4/CSGMesh3D" unique_id=1405898585]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGCombiner3D4" type="CSGCombiner3D" parent="." unique_id=590722828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D4" unique_id=1335273131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1" unique_id=766518438]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=2063102001]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=923247695]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=631795807]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=2059886992]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=466364760]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=416133589]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=660428975]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=712014220]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=2052568365]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=774696306]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=1253598330]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=1956420065]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=2093305556]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=462424184]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=175023116]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=669386877]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=830379483]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=1687704452]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=861385363]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=226200169]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=1674116154]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=823809038]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=2062740097]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D4/Pods1/CSGMesh3D" unique_id=215264139]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D4" unique_id=1205436489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2" unique_id=1799013901]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=483575240]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1533780860]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1415708095]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=2052216072]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=339818421]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=2031391758]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=857242091]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=48900112]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=954915981]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=2039284592]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1025595218]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1977102513]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1269937167]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=116322503]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=898048875]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=521444789]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1908209492]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1775750547]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1184711582]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1530719853]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1726918911]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1305827963]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=1876995083]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D4/Pods2/CSGMesh3D" unique_id=446060194]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D4" unique_id=1219398352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3" unique_id=1718800471]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=756071195]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=2123438020]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=921078825]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1895009199]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1690711693]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1810889348]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=486326353]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1943134132]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=667258366]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1698181156]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=134525255]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=279138478]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=875971804]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1672943523]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=2517577]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=418785659]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1553170693]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1184755026]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=6921955]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=217148037]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=2011540841]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=825078002]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=170815509]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D4/Pods3/CSGMesh3D" unique_id=1915664369]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D4" unique_id=1314865915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4" unique_id=681565404]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1109196557]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1496376178]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1431650371]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=580522226]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1553969441]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1901133328]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=254430501]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=2040035297]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1187372206]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=492989700]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=687636633]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1095445006]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=2135674269]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1385142899]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1580157904]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=16048845]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1923900283]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1146859490]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=2095101712]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=615595928]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1133612209]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=934363683]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=666268807]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D4/Pods4/CSGMesh3D" unique_id=1375229590]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGCombiner3D5" type="CSGCombiner3D" parent="." unique_id=1147738840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D5" unique_id=30363347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1" unique_id=1025906255]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1780511178]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=753851656]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=981076883]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=255558588]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1265457326]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=210678199]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1259426743]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=862900921]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1235460741]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1879605052]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=494397696]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=874825288]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1709255112]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1564359148]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=901953723]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=680861368]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1211407139]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=2068895196]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=343765327]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1718403851]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1151163565]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=1526417257]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=49863017]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D5/Pods1/CSGMesh3D" unique_id=998453876]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D5" unique_id=1627169435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2" unique_id=390846175]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=413147530]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=941820989]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=2058849581]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1503053726]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=3156249]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=198322231]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1308674947]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1912416227]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=297821581]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=498924898]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=730814379]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=536443964]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1723255450]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1597900616]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1233727715]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1840286687]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=218407158]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=282110227]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=27689628]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=1849490318]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=307402316]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=774899480]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=905895503]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D5/Pods2/CSGMesh3D" unique_id=560133687]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D5" unique_id=176488057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3" unique_id=221701680]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1856647221]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1485729279]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1470643816]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=463604246]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1065096564]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=75323505]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1226720043]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1933579176]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=2074959189]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=68871919]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1792535776]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=693053588]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1162701559]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=592636282]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1371131012]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1428384516]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=368400829]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=240799170]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1828064844]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=616364047]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1886465260]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=1377671584]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=908266388]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D5/Pods3/CSGMesh3D" unique_id=2003251180]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D5" unique_id=981613306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4" unique_id=773711079]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1722335544]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=308212426]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1960811973]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1915475674]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1641417277]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1180417559]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1383534364]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=187306120]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1830319227]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1711306915]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=704267613]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1123763901]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1510737191]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=567985938]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1592148037]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1193234146]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1245339775]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1823085409]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1662737447]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1643310395]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1079349945]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=2039960544]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=2101211007]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D5/Pods4/CSGMesh3D" unique_id=1918005613]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGCombiner3D6" type="CSGCombiner3D" parent="." unique_id=1373652459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120)
+
+[node name="Pods1" type="CSGCombiner3D" parent="CSGCombiner3D6" unique_id=164196442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1" unique_id=1456939533]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=2019085627]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1985595405]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=338346546]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1439427826]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=591816573]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1761686642]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1695109987]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1681447193]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=488208998]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1286427369]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1865541238]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=878156859]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=565293287]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1363945273]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1216082837]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1946921436]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=307564294]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=2129289328]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1181473647]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=590532454]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=679246315]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1488216654]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=318653974]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D6/Pods1/CSGMesh3D" unique_id=1581389624]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods2" type="CSGCombiner3D" parent="CSGCombiner3D6" unique_id=688344236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2" unique_id=1930585134]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=177608541]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1490180309]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1703450714]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1030760600]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1962632150]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1407616832]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=205899064]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=75110300]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=360223651]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1558713569]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1005734958]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=521983073]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=2050035912]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=673147329]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1302544345]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1820576871]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=515397022]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1140454479]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1021528958]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1534212957]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1397780820]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1453368533]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1852820906]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D6/Pods2/CSGMesh3D" unique_id=1794174176]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods3" type="CSGCombiner3D" parent="CSGCombiner3D6" unique_id=1508840155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3" unique_id=1125548227]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=174940511]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2070930347]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2080507002]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=219594138]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1576386532]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2135833624]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1293988462]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1443076294]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=471652941]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2133178953]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2067355811]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=226605171]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1585433101]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2066233092]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=29378018]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=878283182]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=566145401]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=512805585]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=2128114044]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1002768183]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=619385992]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1992089665]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1965725344]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D6/Pods3/CSGMesh3D" unique_id=1822455769]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Pods4" type="CSGCombiner3D" parent="CSGCombiner3D6" unique_id=145573315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4" unique_id=1140040750]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1470326516]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -14.828, 0.92900133, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1125338580]
+transform = Transform3D(0.91037834, 0.41377676, 0, -0.41377676, 0.91037834, 0, 0, 0, 1, -11.419, 9.079999, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=44624973]
+transform = Transform3D(0.92881334, 0.3705478, 0, -0.3705478, 0.92881334, 0, 0, 0, 1, -12.596, 6.3739986, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1316241692]
+transform = Transform3D(0.93028814, 0.3668296, 0, -0.3668296, 0.93028814, 0, 0, 0, 1, -13.759, 3.5999997, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=2147374649]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -14.682804, -1.7396919, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1193894241]
+transform = Transform3D(-0.9331177, 0.35957143, 0, -0.35957143, -0.9331177, 0, 0, 0, 1, -11.2562, -9.883306, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=666627509]
+transform = Transform3D(-0.9151936, 0.40301472, 0, -0.40301472, -0.9151936, 0, 0, 0, 1, -12.362059, -7.14746, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=2040231650]
+transform = Transform3D(-0.9135743, 0.4066723, 0, -0.4066723, -0.9135743, 0, 0, 0, 1, -13.526242, -4.3739576, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1907552002]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -9.551129, -11.088725, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1854593061]
+transform = Transform3D(-0.4104868, 0.9118666, 0, -0.9118666, -0.4104868, 0, 0, 0, 1, -1.387874, -14.468271, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=453712173]
+transform = Transform3D(-0.3671916, 0.93014544, 0, -0.93014544, -0.3671916, 0, 0, 0, 1, -4.098108, -13.301049, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1496322193]
+transform = Transform3D(-0.36346808, 0.9316068, 0, -0.9316068, -0.36346808, 0, 0, 0, 1, -6.8762903, -12.148074, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1876521810]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 9.649165, -11.153409, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1328790281]
+transform = Transform3D(-0.3547109, -0.93497616, 0, 0.93497616, -0.3547109, 0, 0, 0, 1, 1.4878293, -14.53759, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=734350018]
+transform = Transform3D(-0.39824685, -0.91727847, 0, 0.91727847, -0.39824685, 0, 0, 0, 1, 4.2293935, -13.445982, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1270033528]
+transform = Transform3D(-0.40191284, -0.91567814, 0, 0.91567814, -0.40191284, 0, 0, 0, 1, 7.0089173, -12.296247, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=2023616136]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 11.363924, -9.449292, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1303603005]
+transform = Transform3D(0.9099642, 0.41468707, 0, -0.41468707, 0.9099642, 0, 0, 0, 1, 14.7810755, -1.3017076, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=968696884]
+transform = Transform3D(0.9284424, 0.37147662, 0, -0.37147662, 0.9284424, 0, 0, 0, 1, 13.601369, -4.0065312, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=2116460858]
+transform = Transform3D(0.92992103, 0.36775985, 0, -0.36775985, 0.92992103, 0, 0, 0, 1, 12.435596, -6.7793674, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1654906849]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 11.335039, 9.219629, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=246200340]
+transform = Transform3D(-0.9249818, 0.38001162, 0, -0.38001162, -0.9249818, 0, 0, 0, 1, 14.81396, 0.919366, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=1557745485]
+transform = Transform3D(-0.9226851, 0.38555458, 0, -0.38555458, -0.9226851, 0, 0, 0, 1, 13.756185, 3.756221, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D6/Pods4/CSGMesh3D" unique_id=657713682]
+transform = Transform3D(-0.93094337, 0.36516386, 0, -0.36516386, -0.93094337, 0, 0, 0, 1, 12.531272, 6.4314427, 0)
+mesh = SubResource("CapsuleMesh_bah7m")
+
+[node name="Room1" type="Camera3D" parent="." unique_id=544690751 node_paths=PackedStringArray("target", "trigger_component")]
+transform = Transform3D(0.044487778, 0.17131455, -0.9842114, 0.0324889, -0.9849139, -0.16996826, -0.9984815, -0.024414437, -0.04938244, -6.819989, 8.824999, 164.02406)
+current = true
+script = ExtResource("4_sqdfn")
+target = NodePath("")
+trigger_component = NodePath("Area3D")
+offset = Vector3(0, 1, 5)
+follow_y = false
+follow_z = false
+
+[node name="Area3D" type="Area3D" parent="Room1" unique_id=1379349063]
+top_level = true
+script = ExtResource("5_3012i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1/Area3D" unique_id=992377923]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -8.6334385e-06, 142.875)
+shape = SubResource("CylinderShape3D_bah7m")
+
+[node name="Room2" type="Camera3D" parent="." unique_id=1737775025 node_paths=PackedStringArray("target", "trigger_component")]
+transform = Transform3D(-0.9886455, -0.006706097, -0.15011716, 0.03248899, -0.9849139, -0.16996834, -0.14671265, -0.1729156, 0.9739485, -6.81999, -0.77599823, 55.65506)
+script = ExtResource("4_sqdfn")
+target = NodePath("")
+trigger_component = NodePath("Area3D")
+offset = Vector3(0, 1, 5)
+follow_x = false
+follow_y = false
+follow_z = false
+
+[node name="Area3D" type="Area3D" parent="Room2" unique_id=1746048961]
+top_level = true
+script = ExtResource("5_3012i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room2/Area3D" unique_id=1366854528]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -8.6334385e-06, 88.875)
+shape = SubResource("CylinderShape3D_js7pq")
+
+[node name="Room3" type="Camera3D" parent="." unique_id=1980803210 node_paths=PackedStringArray("target", "trigger_component")]
+transform = Transform3D(-0.9886455, -0.006706097, -0.15011716, 0.03248899, -0.9849139, -0.16996834, -0.14671265, -0.1729156, 0.9739485, -6.81999, -0.77599823, -113.34494)
+script = ExtResource("4_sqdfn")
+target = NodePath("")
+trigger_component = NodePath("Area3D")
+offset = Vector3(0, 1, 5)
+follow_x = false
+follow_y = false
+follow_z = false
+
+[node name="Area3D" type="Area3D" parent="Room3" unique_id=1134513697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112)
+top_level = true
+script = ExtResource("5_3012i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room3/Area3D" unique_id=1638801921]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -8.6334385e-06, 88.875)
+shape = SubResource("CylinderShape3D_js7pq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=345099640]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 159.65486)
+light_energy = 9.054
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D" unique_id=1151921322]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D" unique_id=630556597]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=2100039499]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 131.65486)
+light_color = Color(1, 0.6380261, 0.6147011, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 97.073
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D2" unique_id=2228650]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=810674780]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 103.65486)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D3" unique_id=630790213]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D3" unique_id=194654027]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="." unique_id=1705678590]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.068998575, -14.138011, 133.65486)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D13" unique_id=1254739876]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D13" unique_id=1458340116]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="." unique_id=1674430199]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 75.65486)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D4" unique_id=225110863]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D4" unique_id=1844555140]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="." unique_id=118406679]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 47.65486)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D5" unique_id=1369361558]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D5" unique_id=908776950]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="." unique_id=202997721]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, 19.654861)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D6" unique_id=860852969]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D6" unique_id=278544156]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="." unique_id=1452227415]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -8.345139)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D7" unique_id=1323142652]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D7" unique_id=2065924710]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="." unique_id=1349828037]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -36.34514)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D8" unique_id=1233869398]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D8" unique_id=565125000]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="." unique_id=1439883077]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -64.34514)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D9" unique_id=1914732668]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D9" unique_id=1084714109]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="." unique_id=1408087006]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -92.34514)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D10" unique_id=2023097128]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D10" unique_id=1971644488]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="." unique_id=285135677]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -120.34514)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D11" unique_id=335038349]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D11" unique_id=1060318011]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="." unique_id=1662605472]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, 0.06899853, -14.138011, -148.34514)
+light_color = Color(0.6255486, 0, 0.10472538, 1)
+light_energy = 16.0
+light_indirect_energy = 1.93
+light_volumetric_fog_energy = 1.186
+light_size = 1.0
+light_specular = 0.0
+distance_fade_begin = 1.0
+spot_range = 46.245
+spot_angle = 21.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D12" unique_id=338938644]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.6999998)
+mesh = SubResource("CylinderMesh_bah7m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpotLight3D12" unique_id=693897808]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12)
+mesh = SubResource("CylinderMesh_fvag4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1818480193]
+environment = SubResource("Environment_js7pq")
+
+[connection signal="body_entered" from="Room1/Area3D" to="Room1/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Room1/Area3D" to="Room1/Area3D" method="exit_trigger"]
+[connection signal="body_entered" from="Room2/Area3D" to="Room2/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Room2/Area3D" to="Room2/Area3D" method="exit_trigger"]
+[connection signal="body_entered" from="Room3/Area3D" to="Room3/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Room3/Area3D" to="Room3/Area3D" method="exit_trigger"]

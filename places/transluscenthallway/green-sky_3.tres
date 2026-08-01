@@ -1,0 +1,40 @@
+[gd_resource type="Environment" format=3 uid="uid://fjhkoycqhrg1"]
+
+[ext_resource type="Shader" uid="uid://djm2bkhm66tgi" path="res://cloudsky.gdshader" id="1_n4dsh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07niw"]
+shader = ExtResource("1_n4dsh")
+shader_parameter/use_directional_light = false
+shader_parameter/sun_color = Color(0.43529412, 0.74509805, 0.38431373, 1)
+shader_parameter/sun_energy = 15.0
+shader_parameter/cloud_color = Color(0.21568628, 0.6627451, 0.3529412, 1)
+shader_parameter/cloud_density = 5.0
+shader_parameter/cloud_depth = 2.0
+shader_parameter/cloud_sag = 2.0
+shader_parameter/noise_tiling = Vector2(1, 1)
+shader_parameter/wind_speed = Vector2(0.5, 0.5)
+shader_parameter/ground_bottom_color = Color(0.43529412, 0.74509805, 0.38431373, 1)
+shader_parameter/ground_curve = 0.04
+shader_parameter/exposure = 1.0
+
+[sub_resource type="Sky" id="Sky_wygdx"]
+sky_material = SubResource("ShaderMaterial_07niw")
+radiance_size = 1
+
+[resource]
+background_mode = 2
+background_color = Color(0.41812754, 0.50617236, 0.4207326, 1)
+sky = SubResource("Sky_wygdx")
+ambient_light_color = Color(0.007843138, 0.06666667, 0.019607844, 1)
+ambient_light_sky_contribution = 0.03
+ambient_light_energy = 0.0
+glow_enabled = true
+glow_intensity = 3.95
+glow_bloom = 0.06
+fog_depth_end = 4000.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_emission_energy = 873.45
+volumetric_fog_gi_inject = 0.24
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 0.01

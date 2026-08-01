@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://r4lwftyur7ep"]
+
+[ext_resource type="Texture2D" uid="uid://2ohj4epwdo0c" path="res://textures/DIY-textures/plasterwall-2.png" id="1_2bumh"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_2bumh")
+metallic_specular = 0.0
+metallic_texture_channel = 1
+emission_energy_multiplier = 12.58
+rim = 0.4
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 29.421928
+uv1_world_triplanar = true
+uv2_triplanar = true
+uv2_world_triplanar = true
+texture_filter = 0

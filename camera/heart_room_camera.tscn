@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c4ljoi483vb8"]
+
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="1_1obcl"]
+[ext_resource type="Script" uid="uid://codohthflstce" path="res://camera/scripts/PlayerFollowRotate.gd" id="2_xomhi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_js7pq"]
+
+[node name="HeartRoomCamera" type="Area3D"]
+transform = Transform3D(0.9989176, 0, 0, 0, 0.9989176, 0, 0, 0, 0.9989176, 0, 0, 0)
+top_level = true
+script = ExtResource("1_1obcl")
+
+[node name="Room1Camera" type="Camera3D" parent="."]
+transform = Transform3D(-0.047051955, 0, -0.9999773, 0, 1.0010836, 0, 0.9999773, 0, -0.047051955, -18.019505, -1.0010836, 26.028173)
+script = ExtResource("2_xomhi")
+
+[node name="Room1Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(72.06581, 0, 0, 0, 72.06581, 0, 0, 0, 72.06581, 0, 0, 0)
+shape = SubResource("SphereShape3D_js7pq")
+
+[connection signal="body_entered" from="." to="." method="enter_trigger"]
+[connection signal="body_exited" from="." to="." method="exit_trigger"]

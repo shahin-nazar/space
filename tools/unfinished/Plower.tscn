@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=4 uid="uid://dxipcptlpwwpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0aac"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lxix1"]
+_surfaces = [{
+"aabb": AABB(-0.20000005, -0.5, -0.5, 1.0000001, 1, 1),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgADAAAAAQAEAAMABAAAAAMAAAAEAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("////f/9/AAAAAAAA//8AAAAA/////wAAAAD//wAAAAAAAAAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uffcq"]
+resource_name = "ship-parts_Cylinder_001"
+_surfaces = [{
+"aabb": AABB(-0.20000005, -0.5, -0.5, 1.0000001, 1, 1),
+"attribute_data": PackedByteArray("////f1TVj8lU1f9/VNWPyamq/39U1f9/qaqPyZm6//9khf///58Iy6mqj8n/f4/Jqar/f//fCMtkxf//mfr//w=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAIAAkACgALAAwADQAOAA8A"),
+"material": SubResource("StandardMaterial3D_g0aac"),
+"primitive": 3,
+"uv_scale": Vector4(2, 1.74, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("////f/9/ZZkAAAAA//9lmQAA/////2WZAAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAP/////14AAA//8AAPXg////f/9/9eAAAAAAAACH7f///3//f4ftAAD//wAAh+3///9//38JHwAAAAAAAAkfAAAAAP//CR/mjIxD5oyMQ+aMjEP/f////3////9/////f///47A2nuOwNp7jsDaenZW3Gp2VtxqdlbcaNx4azzceGs83HhrP")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lxix1")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bcbcq"]
+points = PackedVector3Array(-0.20000005, 0.5, 0.5, -0.20000005, 0.5, -0.5, -0.20000005, -0.5, 0.5, 0.7999022, -9.787083e-05, -9.787083e-05, -0.20000005, -0.5, -0.5)
+
+[node name="Plower" type="RigidBody3D"]
+
+[node name="FrontPlower" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_uffcq")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_bcbcq")

@@ -1,0 +1,14 @@
+res://World.tscn
+res://psxshader.gdshader
+res://shaders-general/crt.gdshader
+res://shaders-general/growth.gdshader
+res://player/resources/crevices.tres
+res://medieval-water.gdshader
+res://sky.gdshader
+res://custom-dither.gdshader
+res://colored-dithering.gdshader
+res://postprocessing/oklab_dither_screen(1).gdshader
+res://colored-dither-crt.gdshader
+res://shaders-general/crt_psx_palette.gdshader
+res://shaders-general/crt_psx_palette(1).gdshader
+res://camera/scripts/FixedCamera.gd

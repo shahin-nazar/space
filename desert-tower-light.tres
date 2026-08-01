@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cvsg0jd05lo3n"]
+
+[ext_resource type="Shader" uid="uid://dm1nhnfx88ni6" path="res://shaders-general/eyes.gdshader" id="1_cwwvn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy4fa"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cwwvn")
+shader_parameter/color = Color(0.7089512, 2.0720288e-05, 0.17680293, 1)
+shader_parameter/color_edge = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 5.934000281865
+shader_parameter/rise_progress = 0.0
+shader_parameter/edge_width = 0.2910000138225
+shader_parameter/noise_scale = 0.10000000149012
+shader_parameter/noise_strength = 0.5
+shader_parameter/time_speed = 1.5
+shader_parameter/fade_softness = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fy4fa")
+shader_parameter/top_fade_start = 0.9270000440325
+shader_parameter/top_fade_power = 2.0
+shader_parameter/invert_top_fade = false
+shader_parameter/wave_transparency = 0.98000004655
+shader_parameter/wave_frequency = 20.0
+shader_parameter/wave_speed = 5.0

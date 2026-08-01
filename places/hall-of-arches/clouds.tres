@@ -1,0 +1,27 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://2fiqgvex2727"]
+
+[ext_resource type="Shader" uid="uid://dahr8hbnri3qg" path="res://resources/clouds.tres" id="1_xf1o3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wygdx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bah7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bah7m"]
+render_priority = 0
+shader = ExtResource("1_xf1o3")
+shader_parameter/Speed_1 = Vector2(-0.01, 0.015)
+shader_parameter/Cloud_Noise_1 = SubResource("NoiseTexture2D_wygdx")
+shader_parameter/noise_multiplier = 0.00999999977648
+shader_parameter/Speed_2 = Vector2(-0.01, 0.015)
+shader_parameter/Cloud_Noise_2 = SubResource("NoiseTexture2D_bah7m")
+shader_parameter/scatter_color = Color(0.4622944, 0.9999998, 0.90584457, 1)
+shader_parameter/base_color = Color(0.9703143, 0, 0.08232149, 1)
+shader_parameter/cloud_transparency_threshold = 0.0
+shader_parameter/transparency_multiplier = 1.0
+shader_parameter/cloud_thickness = 0.7560000326501201
+
+[resource]
+material = SubResource("ShaderMaterial_bah7m")
+size = Vector2(200, 200)
+subdivide_width = 50
+subdivide_depth = 50

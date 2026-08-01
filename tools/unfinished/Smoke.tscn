@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=4 uid="uid://4kjkw3n0v4pb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjam4"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ctwg0"]
+_surfaces = [{
+"aabb": AABB(-0.27159822, -0.14829564, -0.14829558, 0.5431965, 0.29659128, 0.29659134),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIABQADAAAABQACAAYAAgAHAAYABAAHAAIACAAFAAYACAAGAAcAAwAJAAQACgAFAAgACgAIAAcABQALAAMACwAFAAoAAwALAAkACQAMAAQACQALAAwADQAEAAwABwAEAA0ACwANAAwACgAHAA4ABwANAA4ACwAKAA8ACwAPAA0ADwAKAA4ADwAOAA0A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD///9/AAD//4HafSUAAP//////fwAAAACB2n0lAAD///9/AAAAAAAAgdqB2gAA//+B2oHaAAD///9//v8AAAAA/3///wAAAAD/fwAAAAAAAH0lgdoAAAAAfSV9JQAA//99JX0lAAD//wAA/38AAP//fSWB2gAAAAAAAP9/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m1fet"]
+resource_name = "ship-parts_Cylinder_004"
+_surfaces = [{
+"aabb": AABB(-0.27159822, -0.14829564, -0.14829558, 0.5431965, 0.29659128, 0.29659134),
+"attribute_data": PackedByteArray("////f//fAAD//wAA/9//f//f/3//vwAA/98AAP+//3//v/9//58AAP+/AAD/n/9//5//f/9/AAD/nwAA/3//f/9//3//XwAA/38AAP9f/3//X/9//z8AAP9fAAD/P/9/cH3/v/8/joJxa42UjwL/v44UjZT/P2/9cWtw644UcOv/P/9//x8AAP8/AAD/H/9//x//fwAAAAD/HwAAAAD/f42UjZRw642U/7+OgnDrcOtv/f+/jZRw646C/7//v2/9"),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAGQAbABwAGwAYAB0AHQAYAB4AGwAdAB8AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkAKQArACwAKwAoAC0ALQAoAC4AKwAtAC8A"),
+"material": SubResource("StandardMaterial3D_rjam4"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AAD///9/Gd///4HafSUZ3///////fxnfAACB2n0lGd8AAIHafSW49P///38AALj0//+B2n0luPQAAP9/AAC49AAA/38AALj0//99JX0luPT///9/AAC49AAAfSV9Jbj0AAB9JX0lGd///wAA/38Z3///fSV9JRnfAAAAAP9/Gd8AAAAA/3/IzP//fSWB2sjM//8AAP9/yMwAAH0lgdrIzAAAfSWB2ozB////f/7/jMH//30lgdqMwQAA/3///4zB////fwAA/7///////3//v///gdp9Jf+/////f/7//7///4Hagdr/v///AAD/f/+///99JX0l/7///30lgdr/vwAA/3///4zB//+B2oHajMH///9//v+MwQAAgdqB2ozBAACB2oHayMz//////3/IzP//gdqB2sjMAAD///9/yMwAAIHagdoAAAAAgdp9JQAAAAD///9/AAAAAH0lfSUAAAAA/38AAAAAAAB9JYHaAAAAAP9///8AAAAAAAD/fwAA+K/4r/iv+K/4r/iv+K/4rzW6Nbo1ujW6Nbo1ujW6NbrJRclFyUXJRclFyUXJRclFBlAGUAZQBlAGUAZQBlAGUGRbZFtkW2RbZFtkW2RbZFvIbchtyG3IbchtyG3Ibcht/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAA2kjaSNpI2kjaSNpI2kjaSmqSapJqkmqSapJqkmqSapP8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ctwg0")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fv4w7"]
+points = PackedVector3Array(-0.27159822, -2.9027462e-05, -0.14829558, -0.27159822, -0.10486372, -0.10486364, -0.27159822, 0.104834676, -0.10486364, 0.27159828, -2.9027462e-05, -0.14829558, 0.27159828, -0.10486372, -0.10486364, -0.27159822, -0.14829564, -2.8938055e-05, -0.27159822, 0.14829564, -2.8938055e-05, 0.27159828, 0.104834676, -0.10486364, 0.27159828, -0.14829564, -2.8938055e-05, -0.27159822, -0.10486372, 0.104834795, -0.27159822, 0.104834676, 0.104834795, 0.27159828, 0.14829564, -2.8938055e-05, 0.27159828, -0.10486372, 0.104834795, -0.27159822, -2.9027462e-05, 0.14829576, 0.27159828, 0.104834676, 0.104834795, 0.27159828, -2.9027462e-05, 0.14826673)
+
+[node name="Smoke" type="RigidBody3D"]
+
+[node name="TopSideSmokeGun" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_m1fet")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_fv4w7")

@@ -1,0 +1,14 @@
+DirectionalLight3D
+WorldEnvironment
+Node3D
+MultiMeshInstance3D
+MultiMeshInstance2D
+MeshInstance3D
+CSGBox3D
+Area3D
+CollisionShape3D
+RigidBody3D
+StaticBody3D
+TextureRect
+Node
+SubViewport

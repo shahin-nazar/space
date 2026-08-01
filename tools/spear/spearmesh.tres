@@ -1,0 +1,44 @@
+[gd_resource type="ArrayMesh" format=4 uid="uid://diwsggkfegjew"]
+
+[ext_resource type="Texture2D" uid="uid://cta4ecpg4trjs" path="res://textures/flesh/others_0001_color_2k.jpg" id="1_v6gml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghqei"]
+albedo_texture = ExtResource("1_v6gml")
+emission = Color(0.7289679, 0, 0.13229132, 1)
+emission_energy_multiplier = 10.32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qyvf"]
+albedo_texture = ExtResource("1_v6gml")
+emission = Color(0.8428337, 0.33314168, 0.8045752, 1)
+emission_energy_multiplier = 11.81
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_daqry"]
+_surfaces = [{
+"aabb": AABB(-0.5000001, -0.08660269, -0.100000024, 1.1000003, 0.17320526, 0.20000005),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAAAFAAMAAQAEAAYAAQAGAAIAAwAHAAQABgAEAAcACAADAAUAAwAIAAcACQAFAAAACQAAAAIACQAIAAUABgAHAAoABgAKAAIABwAIAAsACgAHAAsADAAIAAkADAAJAAIADAALAAgACgAMAAIACgALAAwA"),
+"material": SubResource("StandardMaterial3D_8qyvf"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("c9H/fwAAAABz0QAA/z8AAP///3//fwAAAAAAAP8/AAAAAAAA/78AAAAA/38AAAAAc9EAAP+/AAAAAP9///8AAAAA/v//PwAAc9H///8/AABz0f9///8AAAAA/v//vwAAc9H///+/AAA=")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "ship-parts_Cone"
+_surfaces = [{
+"aabb": AABB(-0.5000001, -0.08660269, -0.100000024, 1.1000003, 0.17320526, 0.20000005),
+"attribute_data": PackedByteArray("/z+OgjR1R6H/P/+/NHVHoTR1t97/P/+/NHW33v8/b/3/P/+//z9v/coKt97/P/+/NHVHoTR1t940dbfeNHVHocoKt97KCkeh/z//v8oKR6H/P46C/z//v8qKR6E09Ueh/7+Ogv+/b/3KirfeNPW33soKR6H/P46C/z+OgsoKR6H/P46CNHVHoTR1R6H/P46Cygq33soKR6HKCkehygq33v8/b/3KCrfeygq33v8/b/00dbfe/z9v/f8/b/00dbfe"),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADAAPAA0AEAARABIAEwAUABUAFgAXABgAFwAWABkAGQAWABoAFwAZABsAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0A"),
+"material": SubResource("StandardMaterial3D_ghqei"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("c9H/fwAA2vZz0QAA/z/a9v///3//f9r2c9EAAP8/Q/Rz0QAA/79D9P///3//f0P0c9EAAP+/g+Rz0f9///+D5P///3//f4Pkc9H/f///AKdz0f///78Ap////3//fwCnc9EAAP8//78AAAAA/7//v3PRAAD/v/+/AAAAAP8//79z0f///7+swXPR////P6zB////f/9/rMFz0f///z8m53PR/38AACbn////f/9/JucAAP7//z+qKgAAAAD/P6oqAAD/fwAAqioAAP9///+qKgAA/v//v6oqAAAAAP+/qipz0f///z+p6gAA/38AAKnqc9H/fwAAqeoAAP7//z+p6nPR/38AAKnqAAAAAP8/qepz0QAA/z+p6gAA/38AAKnqc9H///+//78AAP7//z//v3PR////P/+/AAD+//+//79z0f9///+qagAA/v//v6pqc9H///+/qmoAAP9///+qanPRAAD/v6pqAAD/f///qmpz0f9///+qagAAAAD/v6pq45swNeObMDXjmzA1A4wBRgOMAUYDjAFGBYtvYgWLb2IFi29itbO3bLWzt2y1s7dsAAD/fwAA/38AAP9/AAD/f33aPm192j5tfdo+bWPVKWBj1SlgY9UpYFRVqqpUVamqVFWqqlRVqqpVVaqqVFWpqv///3////9/////f////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_daqry")

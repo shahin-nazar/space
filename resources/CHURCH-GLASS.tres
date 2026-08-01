@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d178m2fj0awhp"]
+
+[ext_resource type="Shader" uid="uid://kcu8qhrb6nh6" path="res://shaders-general/scatterglass.gdshader" id="1_033e3"]
+[ext_resource type="Texture2D" uid="uid://cfxc3k32qbova" path="res://textures/clays/Ground050_1K-JPG_Roughness.jpg" id="2_ioc81"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_033e3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_coat = 0.0
+shader_parameter/oilyness = 0.86999998055376
+shader_parameter/rim_amount = 0.749999983236
+shader_parameter/rim_shape = 4.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.2
+shader_parameter/specular = 0.06999999843536
+shader_parameter/roughness_texture = ExtResource("2_ioc81")
+shader_parameter/refraction_strength = 0.5
+shader_parameter/scatter_strength = 0.5
+shader_parameter/tile_size = Vector2(10, 10)

@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://6rya2pov3gmo"]
+
+[ext_resource type="Material" uid="uid://d178m2fj0awhp" path="res://resources/CHURCH-GLASS.tres" id="1_vl33b"]
+[ext_resource type="Material" uid="uid://c0sllaygbe5rr" path="res://textures/AmbientCG/Moss004_1K-JPG.tres" id="2_30oeb"]
+[ext_resource type="Material" uid="uid://bbtj7grjkbhmq" path="res://textures/AmbientCG/Sponge003_2K-JPG.tres" id="3_3if0y"]
+[ext_resource type="Shader" uid="uid://dahr8hbnri3qg" path="res://resources/clouds.tres" id="4_hs3hg"]
+[ext_resource type="Script" uid="uid://dpjjqcedvpruq" path="res://camera/scripts/FixedCamera.gd" id="5_m2td1"]
+[ext_resource type="Script" uid="uid://bpvn8xxgblvct" path="res://camera/scripts/CameraTrigger.gd" id="6_41bly"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wygdx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bah7m"]
+render_priority = 0
+shader = ExtResource("4_hs3hg")
+shader_parameter/Speed_1 = Vector2(-0.01, 0.015)
+shader_parameter/Cloud_Noise_1 = SubResource("NoiseTexture2D_wygdx")
+shader_parameter/noise_multiplier = 0.00999999977648
+shader_parameter/Speed_2 = Vector2(1.095, 2.19)
+shader_parameter/scatter_color = Color(0.0097842105, 0.028006842, 0.02840149, 1)
+shader_parameter/base_color = Color(0.925353, 0.925353, 0.925353, 1)
+shader_parameter/cloud_transparency_threshold = 1.0
+shader_parameter/transparency_multiplier = 1.0
+shader_parameter/cloud_thickness = 98.2950046657526
+
+[sub_resource type="QuadMesh" id="QuadMesh_eu7l1"]
+material = SubResource("ShaderMaterial_bah7m")
+size = Vector2(100, 100)
+subdivide_width = 30
+subdivide_depth = 30
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bah7m"]
+height = 1000.0
+radius = 88.18
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" unique_id=559688921]
+
+[node name="Quadpipe" type="Node3D" parent="." unique_id=305967210]
+transform = Transform3D(0.67549974, 1.17, -0.78, -1.3509996, 0.7799999, 0, 0.38999996, 0.6754998, 1.3509996, 0, 152, 0)
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Quadpipe" unique_id=876623951]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="Quadpipe" unique_id=1279105135]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, 1, 0, -30, -4.371139e-08, 0, 0, -19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="Quadpipe" unique_id=1518318093]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, 1, 0, -30, -4.371139e-08, 0, 0, 19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="Quadpipe" unique_id=957685215]
+transform = Transform3D(1, 0, 0, 0, -30, -8.742278e-08, 0, 2.622683e-06, -1, 0, -19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="cartilage" type="CSGCombiner3D" parent="Quadpipe" unique_id=405929410]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Quadpipe/cartilage" unique_id=1108746433]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Quadpipe/cartilage" unique_id=955565332]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, -1, 0, 30, -4.371139e-08, 0, 0, 0)
+operation = 1
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="Quadpipe4" type="Node3D" parent="." unique_id=1813518388]
+transform = Transform3D(0.25865752, 0.4480079, -1.4717286, -1.3509996, 0.78, -3.644149e-08, 0.7358643, 1.2745544, 0.517315, 0, 358.7328, 0)
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Quadpipe4" unique_id=685079663]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="Quadpipe4" unique_id=1663672211]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, 1, 0, -30, -4.371139e-08, 0, 0, -19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="Quadpipe4" unique_id=255949724]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, 1, 0, -30, -4.371139e-08, 0, 0, 19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="Quadpipe4" unique_id=17593038]
+transform = Transform3D(1, 0, 0, 0, -30, -8.742278e-08, 0, 2.622683e-06, -1, 0, -19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="cartilage" type="CSGCombiner3D" parent="Quadpipe4" unique_id=46107855]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Quadpipe4/cartilage" unique_id=1103434478]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Quadpipe4/cartilage" unique_id=1729553061]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, -1, 0, 30, -4.371139e-08, 0, 0, 0)
+operation = 1
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="Quadpipe2" type="Node3D" parent="." unique_id=1063055995]
+transform = Transform3D(0, 2.3961068e-08, -1.6080003, -1.3925692, 0.804, 2.4777528e-08, 0.804, 1.392569, 4.7922136e-08, 29, 6, 0)
+
+[node name="cartilage" type="CSGCombiner3D" parent="Quadpipe2" unique_id=643397901]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Quadpipe2/cartilage" unique_id=929585623]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Quadpipe2/cartilage" unique_id=520074688]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, -1, 0, 30, -4.371139e-08, 0, 0, 0)
+operation = 1
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Quadpipe2" unique_id=1794275674]
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Quadpipe2/CSGCylinder3D" unique_id=135743130]
+transform = Transform3D(1.0000001, 9.536743e-07, 1.7763568e-15, -2.9802322e-08, 30.000002, 0, -4.440892e-16, 0, 1.0000001, 0, 19.000002, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="Quadpipe2/CSGCylinder3D" unique_id=681480142]
+transform = Transform3D(1.0000001, -1.1368684e-13, 2.9802322e-08, -2.9802322e-08, -1.3113415e-06, 1, -4.440892e-16, -30.000002, -4.371139e-08, 0, 0, -19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="Quadpipe2/CSGCylinder3D" unique_id=1577100690]
+transform = Transform3D(1.0000002, -2.2737368e-13, 5.9604645e-08, -5.9604645e-08, -2.622683e-06, 1, -4.440892e-16, -60.00001, -4.371139e-08, -2.3841858e-07, 1.1920929e-07, 35.16916)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="Quadpipe2/CSGCylinder3D" unique_id=980173414]
+transform = Transform3D(1.0000001, -9.536743e-07, -7.1054274e-15, -2.9802322e-08, -30.000002, -8.7422784e-08, -4.440892e-16, 2.622683e-06, -1.0000001, -9.536743e-07, -19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="Quadpipe3" type="Node3D" parent="." unique_id=816696290]
+transform = Transform3D(-0.18682249, -1.5928565, -0.116491854, -1.5764236, 0.20272778, -0.24383458, 0.2562249, 0.085874796, -1.5851308, 3.433992, 40, 21.856981)
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Quadpipe3" unique_id=178618715]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="Quadpipe3" unique_id=1695790952]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, 1, 0, -30, -4.371139e-08, 0, 0, -19)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="Quadpipe3" unique_id=594848689]
+transform = Transform3D(1.0000001, -2.2737368e-13, 2.9802322e-08, -2.9802322e-08, -2.622683e-06, 1, -4.440892e-16, -60.000004, -4.371139e-08, 0, 0, 35.169155)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="Quadpipe3" unique_id=839821861]
+transform = Transform3D(1, 0, 0, 0, -30, -8.742278e-08, 0, 2.622683e-06, -1, 0, -19, 0)
+operation = 2
+inner_radius = 2.0
+outer_radius = 3.3
+material = ExtResource("1_vl33b")
+
+[node name="cartilage" type="CSGCombiner3D" parent="Quadpipe3" unique_id=1823907109]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Quadpipe3/cartilage" unique_id=839972942]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Quadpipe3/cartilage" unique_id=793600645]
+transform = Transform3D(1, 0, 0, 0, -1.3113416e-06, -1, 0, 30, -4.371139e-08, 0, 0, 0)
+operation = 1
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_30oeb")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="." unique_id=1743464378]
+transform = Transform3D(1, 0, 0, 0, 1000, 0, 0, 0, 1, 0, 30, 0)
+inner_radius = 49.0
+outer_radius = 50.0
+material = ExtResource("3_3if0y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1698332358]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_eu7l1")
+skeleton = NodePath("../..")
+
+[node name="Room1" type="Camera3D" parent="." unique_id=554596670 node_paths=PackedStringArray("trigger_component")]
+transform = Transform3D(-0.008551066, -0.9492994, 0.3142572, -0.025821265, 0.3143735, 0.9489482, -0.99963003, 0, -0.027200341, 46.082428, 461.60303, 0.107782975)
+current = true
+fov = 46.0
+script = ExtResource("5_m2td1")
+trigger_component = NodePath("Area3D")
+offset = Vector3(0, 20, -5)
+follow_camera = false
+follow_x = false
+follow_z = false
+lock_rotation_y = true
+
+[node name="Area3D" type="Area3D" parent="Room1" unique_id=829056252]
+top_level = true
+script = ExtResource("6_41bly")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1/Area3D" unique_id=131498988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.5, -36.5)
+shape = SubResource("CylinderShape3D_bah7m")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1291434548]
+transform = Transform3D(1, -4.371097e-08, -4.3903242e-08, 4.371098e-08, -0.0043888097, 0.9999904, -4.3903228e-08, -0.9999904, -0.0043888097, 0, 423.5939, 0)
+light_color = Color(0.7363013, 0.60743266, 0.5127578, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.905
+spot_range = 1419.6906
+spot_angle = 16.879013
+
+[connection signal="body_entered" from="Room1/Area3D" to="Room1/Area3D" method="enter_trigger"]
+[connection signal="body_exited" from="Room1/Area3D" to="Room1/Area3D" method="exit_trigger"]

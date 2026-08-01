@@ -1,0 +1,58 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c6f3ldr7rrgq3"]
+
+[sub_resource type="Shader" id="Shader_xf3yl"]
+code = "shader_type spatial;
+uniform vec4 baseColor : source_color = vec4(0, 0, 0, 1.0);
+uniform vec4 fresnelAlbedo : source_color = vec4(0.3, 0.3, 0.3, 1.0);
+uniform bool invertFresnel = false;
+uniform float roughness = 0.2;
+uniform float metallic = 0.3;
+uniform sampler2D normalMap;
+uniform float normalMapStrngth = 0.40;
+uniform float scaleX = 5;
+uniform float scaleY = 5;
+uniform float speedX = 20;
+uniform float speedY = 20;
+
+vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 view)
+{
+	return pow((1.0 - dot(normalize(normal), normalize(view))), amount) * color * intensity;
+}
+
+
+void fragment(){
+	float f_dot = 1.0 - dot(normalize(NORMAL), normalize(VIEW));
+	float fresnel_factor = pow(f_dot, 4.0);
+	vec2 uv_offset = vec2(TIME * speedX / 10000.0, TIME * speedY / 10000.0);
+	NORMAL_MAP = texture(normalMap, (UV + uv_offset) * vec2(scaleX, scaleY)).rgb;
+	NORMAL_MAP_DEPTH = normalMapStrngth;
+	ROUGHNESS = roughness;
+	METALLIC = metallic;
+
+	if (invertFresnel){
+		ALBEDO = mix(baseColor.rgb, fresnelAlbedo.rgb, clamp(fresnel_factor * 4.5, 0.0, 1.0));
+	}
+	else{
+		vec3 fresnel = fresnel_factor * fresnelAlbedo.rgb * 4.5;
+		ALBEDO = baseColor.rgb + fresnel;
+	}
+
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tl2ut"]
+load_path = "res://.godot/imported/Ground050_1K-JPG_NormalDX.jpg-263b3bc8149a115dd18389e910a20f18.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_xf3yl")
+shader_parameter/baseColor = Color(0.15812287, 0.03643665, 0.009652905, 1)
+shader_parameter/fresnelAlbedo = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/invertFresnel = false
+shader_parameter/roughness = 0.2
+shader_parameter/metallic = 0.3
+shader_parameter/normalMap = SubResource("CompressedTexture2D_tl2ut")
+shader_parameter/normalMapStrngth = 0.4
+shader_parameter/scaleX = 2.5
+shader_parameter/scaleY = 5.6
+shader_parameter/speedX = 0.0
+shader_parameter/speedY = 15.0

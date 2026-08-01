@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KeyTypeData" format=3 uid="uid://disi6csglabpj"]
+
+[ext_resource type="Script" path="res://tools/keys/keytype-resource.gd" id="1_mf1py"]
+
+[resource]
+script = ExtResource("1_mf1py")
+metadata/_custom_type_script = "uid://bmminitwn034m"

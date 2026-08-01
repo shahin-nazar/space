@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://23u8pilnwl23"]
+
+[ext_resource type="Shader" uid="uid://bqhnlhit3dgtu" path="res://shaders-general/growth.gdshader" id="1_j51mw"]
+[ext_resource type="Texture2D" uid="uid://dqbqu62hclp53" path="res://player/textures/girlparasite_maggot1 - Copy.png" id="2_6wh7g"]
+[ext_resource type="Texture2D" uid="uid://cnme3t067ic5b" path="res://textures/clays/Ground050_1K-JPG_Color.jpg" id="3_ugosi"]
+[ext_resource type="Texture2D" uid="uid://cfxc3k32qbova" path="res://textures/clays/Ground050_1K-JPG_Roughness.jpg" id="4_vhumt"]
+[ext_resource type="Texture2D" uid="uid://oaxrqwfoi3fb" path="res://textures/clays/Ground050_1K-JPG_NormalDX.jpg" id="5_hx2s6"]
+[ext_resource type="Texture2D" uid="uid://6851hwjg7fb5" path="res://textures/flesh/others_0001_roughness_2k.jpg" id="6_o7feh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ujsm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j51mw")
+shader_parameter/grow_texture = ExtResource("3_ugosi")
+shader_parameter/albedo_texture = ExtResource("2_6wh7g")
+shader_parameter/normal_texture = ExtResource("5_hx2s6")
+shader_parameter/noise_texture = ExtResource("4_vhumt")
+shader_parameter/rounghess_texture = ExtResource("6_o7feh")
+shader_parameter/ems = 0.0
+shader_parameter/distortionVertex = 0.09499999787656
+shader_parameter/speedVertex = 0.17999999597664
+shader_parameter/noiseVertex = SubResource("NoiseTexture2D_3ujsm")
+shader_parameter/offset_direction = Vector3(1, 0, 0)
+shader_parameter/offset_strength = 0.1
+shader_parameter/shrink_strength = 0.5
+shader_parameter/alpha_apply = false

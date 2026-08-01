@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhlbubrdht4km"]
+
+[ext_resource type="Script" uid="uid://cwkf0jm5b0msa" path="res://postprocessing/dither-costly/dither_compute.gd" id="1_wi8lf"]
+
+[node name="DitherCompute" type="Node" unique_id=1825103895 node_paths=PackedStringArray("source_viewport", "output_rect")]
+script = ExtResource("1_wi8lf")
+source_viewport = NodePath("")
+output_rect = NodePath("")
+palette_hex = PackedStringArray("#0B0C10", "#1B1E27", "#262B3D", "#333B54", "#454F6E", "#5B6684", "#7683A0", "#F2C6BE", "#E08F82", "#C85A4C", "#9E332B", "#6E1F1D", "#C9B991", "#A69A62", "#CFD9D6", "#93A8A2")

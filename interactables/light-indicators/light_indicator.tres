@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cwvfnncph4flq"]
+
+[ext_resource type="Shader" uid="uid://dko347ckpiwqj" path="res://shaders-general/hologram.gdshader" id="1_5siv4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5siv4")
+shader_parameter/primary_color = Color(1, 0, 0, 1)
+shader_parameter/secondary_color = Color(1, 0, 0, 1)
+shader_parameter/density = 1.0
+shader_parameter/effect_strength = 2.0
+shader_parameter/wipe_scale = 15.999999642368
+shader_parameter/wipe_speed = 0.87999998033024
+shader_parameter/wipe_blend = 0.999999977648
+shader_parameter/signal_scale = 40.0
+shader_parameter/signal_speed = 1.0
+shader_parameter/signal_random_scale = 0.3
+shader_parameter/signal_blend = 1.0
+shader_parameter/noise_distort_amount = 0.1
+shader_parameter/noise_amount = 1.0
+shader_parameter/grain_amount = 0.4
+shader_parameter/displacement_amount = 1.0
+shader_parameter/flicker_amount = 0.3
+shader_parameter/flicker_speed = 10.0

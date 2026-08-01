@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bd8w8e3euxm6s"]
+
+[ext_resource type="ArrayMesh" uid="uid://diwsggkfegjew" path="res://tools/spear/spearmesh.tres" id="1_u3pj6"]
+
+[node name="TopSideSpear" type="MeshInstance3D" unique_id=119845537]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_u3pj6")
+skeleton = NodePath("")

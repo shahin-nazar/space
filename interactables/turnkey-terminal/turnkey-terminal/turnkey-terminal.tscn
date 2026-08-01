@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://pkae40llcyxg"]
+
+[ext_resource type="Script" uid="uid://dgb21tmf72nsf" path="res://interactables/turnkey-terminal/turnkey-terminal/turnkey_terminal.gd" id="1_t6x0n"]
+[ext_resource type="Script" uid="uid://cgmx68wqk5whp" path="res://interactables/turnkey-terminal/turnkey-terminal/terminal_highlighter.gd" id="2_6jden"]
+[ext_resource type="Shader" uid="uid://bqhnlhit3dgtu" path="res://shaders-general/growth.gdshader" id="2_ehcad"]
+[ext_resource type="Texture2D" uid="uid://cta4ecpg4trjs" path="res://textures/flesh/others_0001_color_2k.jpg" id="3_r75cr"]
+[ext_resource type="Texture2D" uid="uid://cxwi7b8aknqcy" path="res://textures/chip/Chip003_1K-JPG_Metalness.jpg" id="4_g8vp3"]
+[ext_resource type="Texture2D" uid="uid://6851hwjg7fb5" path="res://textures/flesh/others_0001_roughness_2k.jpg" id="5_wmwyy"]
+[ext_resource type="Texture2D" uid="uid://lewn6y1gh54y" path="res://textures/chip/Chip006_1K-JPG_Roughness.jpg" id="6_cr4rx"]
+[ext_resource type="Texture2D" uid="uid://dojy08h0dro2r" path="res://textures/chip/Chip006_1K-JPG_NormalDX.jpg" id="7_g8vp3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfwwe"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oe2jk"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhjo8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nounc"]
+render_priority = 0
+shader = ExtResource("2_ehcad")
+shader_parameter/grow_texture = ExtResource("5_wmwyy")
+shader_parameter/albedo_texture = ExtResource("3_r75cr")
+shader_parameter/normal_texture = ExtResource("7_g8vp3")
+shader_parameter/ems_texture = ExtResource("4_g8vp3")
+shader_parameter/ems = 0.0
+shader_parameter/distortionVertex = 0.30000001192093
+shader_parameter/speedVertex = 0.00999999977648
+shader_parameter/noiseVertex = ExtResource("6_cr4rx")
+shader_parameter/offset_direction = Vector3(1, 0, 0)
+shader_parameter/offset_strength = 0.1
+shader_parameter/shrink_strength = 1.0
+shader_parameter/alpha_apply = false
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nounc"]
+material = SubResource("ShaderMaterial_nounc")
+height = 1.0
+radial_segments = 16
+
+[node name="terminal-area" type="Area3D" unique_id=2039002330 node_paths=PackedStringArray("doors")]
+script = ExtResource("1_t6x0n")
+doors = [null]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=277579742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_rfwwe")
+
+[node name="terminalhighlighter" type="Area3D" parent="." unique_id=982916992]
+script = ExtResource("2_6jden")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terminalhighlighter" unique_id=1536202633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oe2jk")
+
+[node name="TurnkeyTerminal" type="StaticBody3D" parent="." unique_id=161152243]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TurnkeyTerminal" unique_id=1529582091]
+shape = SubResource("BoxShape3D_vhjo8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TurnkeyTerminal/CollisionShape3D" unique_id=1038697946]
+mesh = SubResource("CapsuleMesh_nounc")
+skeleton = NodePath("../..")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djegfut3wv8q7"]
+
+[ext_resource type="Script" uid="uid://bq0o4igao5aog" path="res://tools/keys/key/key-equipped.gd" id="1_oqw7e"]
+[ext_resource type="Script" uid="uid://i0dmyy2wysw2" path="res://tools/keys/keytype-resource.gd" id="2_5iswj"]
+
+[sub_resource type="Resource" id="Resource_l22v1"]
+script = ExtResource("2_5iswj")
+metadata/_custom_type_script = "uid://i0dmyy2wysw2"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5iswj"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_occgb"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_skqfo"]
+material = SubResource("StandardMaterial3D_occgb")
+size = Vector3(0.2, 0.2, 1)
+
+[node name="key-equipped" type="Area3D" unique_id=532121841 groups=["tools"]]
+script = ExtResource("1_oqw7e")
+key_type = SubResource("Resource_l22v1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1156526482]
+shape = SubResource("BoxShape3D_5iswj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2081068770]
+mesh = SubResource("PrismMesh_skqfo")

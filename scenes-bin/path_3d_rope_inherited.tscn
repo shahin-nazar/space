@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctkmt3b8owvgp"]
+
+[ext_resource type="PackedScene" uid="uid://x4xnc85khpl5" path="res://scenes-bin/path_3d_rope.tscn" id="1_tmwua"]
+
+[sub_resource type="Curve3D" id="Curve3D_tmwua"]
+resource_local_to_scene = true
+bake_interval = 512.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Path3DRope" unique_id=1490907184 instance=ExtResource("1_tmwua")]
+curve = SubResource("Curve3D_tmwua")
