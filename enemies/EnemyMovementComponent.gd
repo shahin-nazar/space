@@ -15,5 +15,3 @@ func update_movement(delta):
 		body.velocity.y -= gravity * delta
 
 	body.move_and_slide()
-
-
