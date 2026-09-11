@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dxpq2b4bkv3yf"]
+
+[ext_resource type="Script" uid="uid://du85ba226jsen" path="res://enemies/sensors/Ear.gd" id="1_fcnwj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0vgsi"]
+radius = 5.0
+
+[node name="EnemyEarComponent" type="Area3D" unique_id=1213196932 node_paths=PackedStringArray("owner_character")]
+script = ExtResource("1_fcnwj")
+owner_character = NodePath("")
+
+[node name="EarCollision" type="CollisionShape3D" parent="." unique_id=2082186991]
+shape = SubResource("SphereShape3D_0vgsi")

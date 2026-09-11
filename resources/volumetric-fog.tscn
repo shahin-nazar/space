@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bh0npnmgen40j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sjtuv"]
+sky_top_color = Color(0.31469625, 0.47774762, 0.52862996, 1)
+
+[sub_resource type="Sky" id="Sky_cvq6i"]
+sky_material = SubResource("ProceduralSkyMaterial_sjtuv")
+
+[sub_resource type="Environment" id="Environment_6tx0c"]
+background_mode = 1
+background_color = Color(0.991046, 0.7961016, 0.75205356, 1)
+sky = SubResource("Sky_cvq6i")
+ambient_light_color = Color(0.86122406, 0.53980416, 0.3496191, 1)
+glow_intensity = 3.21
+glow_strength = 0.78
+glow_bloom = 0.09
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_sun_scatter = 1.0
+fog_density = 0.3328
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.7895
+volumetric_fog_albedo = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_anisotropy = -0.9
+volumetric_fog_length = 0.1
+volumetric_fog_detail_spread = 0.5743492
+volumetric_fog_ambient_inject = 1.67
+
+[node name="WorldEnvironment2" type="WorldEnvironment" unique_id=984583303]
+environment = SubResource("Environment_6tx0c")

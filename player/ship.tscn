@@ -624,7 +624,7 @@ settings/0/joints/2/rotation_axis = 3
 settings/0/joints/2/limitation = null
 
 [node name="LeftarmMarker" type="Marker3D" parent="girlparasite2/metarig/Girl" unique_id=2018018427]
-transform = Transform3D(1, 2.26267e-08, 2.9787444e-09, -2.262667e-08, 0.9659258, 0.25881904, 2.9789717e-09, -0.25881907, 0.96592575, 0.9509486, -0.029794514, 0.07945287)
+transform = Transform3D(1, 0, -7.81597e-14, 0, 1, 0, 7.81597e-14, 0, 1, 0.42457533, 0.9236376, -0.09186703)
 
 [node name="Rightarm" type="JacobianIK3D" parent="girlparasite2/metarig/Girl" unique_id=1966198425]
 transform = Transform3D(1, 0, -2.842171e-14, 0, 1, 0, 2.842171e-14, 0, 1, 0, 0, 0)
@@ -644,7 +644,7 @@ settings/0/joints/2/rotation_axis = 3
 settings/0/joints/2/limitation = null
 
 [node name="RightarmMaker" type="Marker3D" parent="girlparasite2/metarig/Girl" unique_id=1802143761]
-transform = Transform3D(1, 0, -3.5527137e-14, 0, 1, 0, 3.5527137e-14, 0, 1, -0.49657992, 0.70514274, -0.09186715)
+transform = Transform3D(1, 0, -6.3948846e-14, 0, 1, 0, 6.3948846e-14, 0, 1, -0.49657992, 0.70514274, -0.09186715)
 
 [node name="Leftleg" type="JacobianIK3D" parent="girlparasite2/metarig/Girl" unique_id=1521924773]
 transform = Transform3D(1, 0, -2.842171e-14, 0, 1, 0, 2.842171e-14, 0, 1, 0, 0, 0)

@@ -16,7 +16,6 @@ extends Camera3D
 @export var lock_rotation_x := false
 @export var lock_rotation_y := false
 @export var lock_rotation_z := false
-@export var number := 0.1
 
 #yay!
 
